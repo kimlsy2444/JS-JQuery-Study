@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$()의 실체-2</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            var cnt = 1;
+            $("#addMenu").click(function(){
+                cnt++;
+                // ul의 인스턴스를 이용하여 ,append()이용해서 동적으로 li를 추가해주고 있다.
+                $("#menu").append("<li>menu"+cnt+"</li>");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id ="addMenu">추가</button>
+    <ul id = "menu">
+        <li>menu1</li>
+    </ul>
+    
+</body>
+</html>

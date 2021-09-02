@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$()의 실체-3</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        // $(document).ready(function(){
+        //     // 아래와 같은 코드를 사용하면 인스턴스를 5개의 인스턴스를 생성 하는 꼴이 된다.
+        //     // jQuery 최적화가 이루어지지 않고 오히려 메모리를 낭비하는 형태가 된다.
+        //     $("#menu").append("<li>menu2</li>");
+        //     $("#menu").append("<li>menu3</li>");
+        //     $("#menu").append("<li>menu4</li>");
+        //     $("#menu").append("<li>menu5</li>");
+
+        //     $("#menu").css("border","2px solid red");
+        // });
+            
+        $(document).ready(function(){
+            // ul인스턴스를 1개를 생성하여 리턴값으로 변수에 대입을 하고 있다
+            // 이 코드가 jQuery의 최적화를 이루고 있다.
+            var $menu = $("#menu");
+            $menu.append("<li>menu2</li>");
+            $menu.append("<li>menu3</li>");
+            $menu.append("<li>menu4</li>");
+            $menu.append("<li>menu5</li>");
+
+            $("#menu").css("border","2px solid red");
+        });
+    </script>
+</head>
+<body>
+    <ul id = "menu">
+        <li>menu1</li>
+    </ul>
+    
+</body>
+</html>
