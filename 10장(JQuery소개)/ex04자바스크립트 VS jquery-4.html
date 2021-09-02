@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 VS jquery-4</title>
+    <style>
+        body{
+            font-size: 15px;
+            font-family: "굴림";
+        }
+    </style>
+    <!-- 자바 스크립트로 버튼을 클릭하면 메시지를 출력하는 코드를 작성 해보기 -->
+    <!-- <script>
+        window.onload = function(){
+            var btn1 = document.getElementById("btn1");
+            // IE7버전 이하를 크로스 브라우징 처리
+            if(btn1.attackEvent){
+                btn1.attackEvent("onclick",function(){
+                    alert("반가");
+                })
+            }
+            // IE7버전 브라우저가 아니라면
+            else{
+                btn1.addEventListener("click",function(){
+                    alert("반갑습니다.");
+                })
+            }
+        }
+    </script> -->
+
+
+    <!-- jquery 이용  -->
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn1").on("click",function(){
+                alert("반갑습니다.");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id = "btn1">버튼</button>
+    <br/>
+</body>
+</html>
