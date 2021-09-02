@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko ">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>난수를 발생시켜 맞추는 게임</title>
+</head>
+<body>
+  
+    
+    <script>
+        var low = 0;    //범위의 최소값
+        var high = 0;   //범위의 최고값
+        var card = 0;   // 정답
+        // 게임의 정답을 맞추기 위해서 무한루프를 돌고있다.
+
+        while(true){
+            var count = 0; // 사용자의 시도횟수
+            low = 0;
+            hight = 99;
+            card = Math.floor(Math.random()*100); // 0 ~ 99 까지의 난수 발생
+            alert("수를 결정하였습니다. 맞춰 보세요")
+            
+            while(true){
+                var n = 0;
+                alert(low + " - "+ hight); //값의 범위를 출력
+                count++;
+                alert("시도 횟수 : "+count);
+                n = prompt("숫자 입력"); // 사용자로 부터 숫자를 입력받음
+                n = parseInt(n);
+
+                if(n > hight || n < low){
+                    alert("값의 범위를 벗어났습니다.")
+                }
+                else{ 
+                // 정상적인 범위의 수가 입력된 경우
+                    if(n == card){
+                     alert("ㅊㅊㅊㅊ");
+                      break;
+                  }
+                  else if(n > card){
+                      alert("더 작은수.")
+                      hight = n; // 범위 재지정 하기위해서 값을 대입하고있다.
+                  }
+                  else{
+                      alert("더 큰수.")
+                      low = n; // 범위 재지정 하기위해서 값을 대입하고있다.
+                  }
+                }
+                alert("시도횟수 "+count);
+                var con = confirm("다시 게임을 하겠습니까?");
+                // 무한루프를 사용할 경우 반드시 빠져나갈 곳을 만들어야한다.
+                if(con == false){
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

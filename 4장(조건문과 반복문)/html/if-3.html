@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문-3</title>
+</head>
+<body>
+    <script>
+        // 2와3의 공배수 검사프로그램
+        var value = window.prompt("숫자를 입력해주세요");
+        // prompt()dptj qkedms value값은 string타입이다. 하여 ,아래코드는 parseInt()통해서
+        // String타입을 강제로 정수타입으로 변환해준다.(강제 형변환)
+        value = parseInt(value);
+        // alert(typeof(value));
+        // &&는 논리 연산자로써 두 두개의 조건이 true이면 true를 리턴한다
+        // ||는 논리 연산자로써 둘중 하나의 조건만 true이면 true를 리턴한다
+
+        // if((value % 2 == 0) && (value % 3 == 0) ){
+        //     alert("2와 3의 공배수입니다.");
+        // }
+        // else{
+        //     alert("2와 3의 공배수가 아닙니다.")
+        // }
+
+        if((value % 2 == 0) || (value % 3 == 0) ){
+            alert("2 or 3의 배수입니다.");
+        }
+        else{
+            alert("2 or 3의 배수가 아닙니다.")
+        }
+    
+    </script>
+</body>
+</html>
