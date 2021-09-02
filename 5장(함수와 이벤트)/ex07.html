@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수-4</title>
+</head>
+<body>
+    <script>
+        // 홀수인지 짝수인지 검사하는 프로그램을 함수로 포장
+        function checkOdd(number){
+        if(number % 2){
+            document.write(number+"는 홀수 입니다. <br/>")
+        }
+        else{
+            document.write(number+"는 짝수 입니다. <br/>")
+            }
+        }
+        var number = prompt("숫자를 입력")
+        checkOdd(number);
+
+        var number = prompt("숫자를 입력")
+        checkOdd(number);
+    </script>
+</body>
+</html>

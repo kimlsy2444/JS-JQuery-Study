@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트-3(jQuery이용)</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // 버튼에 그룹 이벤트 등록(on()를 이용한다.)
+            // 1번째 방법
+            $("#btn").on("mouseover focus", function(){
+              //  alert("하이염>_<");
+                console.log("이벤트 발생")
+            })
+
+            // 2번째 방법
+            // $("#btn").on({
+            //     "mouseover focus" : function(){
+            //         console.log("이벤트 발생")
+            //     }
+            // })
+
+            // 3번째 방법
+            // $("#btn").on({
+            //     "mouseover" : function(){
+            //         console.log("이벤트 발생")
+            //     },
+            //     "focus" : function(){
+            //         console.log("이벤트 발생")
+            //     }
+            // })
+        });
+    </script>
+</head>
+<body>
+    <button id ="btn">버튼</button>
+</body>
+</html>
