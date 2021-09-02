@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지구본 게임</title>
+    <style>
+        .container {
+            width: 600px;
+            height: 500px;
+            position: relative;
+            border: 3px solid red;
+
+        }
+        .container #gigu {
+            width: 50px;
+            margin-left: 250px;
+            margin-top: 150px;
+        }
+        #score{
+            font-size: 30px;
+            font-weight: bold;
+        }
+        #text{
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+    </style>
+
+    <script src="libs/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // 지구본을 클릭하면 점수가 변하도록 만든다. 단, setTineout사용하여 5초후 종료
+        $(document).ready(function(){
+            // 점수 저장 변수
+            var cnt = 0;
+            // 점수 출력 부분
+            var $score = $("#score");
+            // 플래그 변수 선언
+            var play = true;
+
+            $("#gigu").click(function(){
+                if(play == true){
+                    // 점수가 증가
+                    cnt ++;
+                    $score.html(cnt);
+                }
+            });
+             // 게임을 5초후 종료 
+            setTimeout(function(){
+                play = false;
+                alert("게임 종료");
+        },3000);
+        });
+    </script>
+
+</head>
+<body>
+    <div id ="text">
+        현재 점수: <span id="score">0</span>
+    </div>
+    <div class="container">
+        <img src="images/gigu.png" id="gigu">
+    </div>
+</body>
+</html>

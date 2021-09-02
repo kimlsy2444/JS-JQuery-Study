@@ -1,0 +1,28 @@
+#start{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+#scoscoreTextre{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+#score{
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    margin-left: 10px;
+}
+.panel{
+    width: 600px;
+    height: 400px;
+    position: relative;
+    border: 2px solid blue;
+    margin-top: 20px;
+}
+.panel #fish{
+    position: absolute;
+    left: 240px;
+    top: 165px;   
+}

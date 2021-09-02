@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>타이머함수-1(SetInterval())</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        #contents{
+            width: 200px;
+            height: 200px;
+            border: 5px solid blue;
+            margin: 30px;
+
+            font-size: 100px;
+            text-align: center;
+            line-height: 200px;
+            vertical-align: middle;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $contents = $("#contents");
+            var cnt = 0;
+            // // 익명함수 풀이
+            // setInterval(function(){
+            //     cnt ++;
+            //     $contents.text(cnt); // text()를 이용하여 div영역에 출력을 하고 있다.
+            //                         // 단위가 밀리초이므로 현재는 1초다.
+            // }, 1000);
+
+            // 일반함수 풀이
+            function addCnt(){
+                cnt++;
+                $contents.text(cnt);
+            }
+            setInterval(addCnt,1000);
+        });
+    </script>
+
+</head>
+<body>
+    <div id = "contents">
+        0
+    </div>
+</body>
+</html>
