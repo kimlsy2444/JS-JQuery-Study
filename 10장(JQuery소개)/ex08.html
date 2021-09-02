@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ready()의 4가지 방법</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        // 방법1
+        // jQuery(document).ready(function(){
+        //     alert("ready() jQuery 방법1");
+        // });
+
+        // 방법2
+        // jQuery(function(){
+        //     alert("ready() jQuery 방법2");
+        // });
+        
+        // 방법3 
+        // jQuery()대신 $()사용
+        // 가장 추천하는 사용
+        // $(document).ready(function(){
+        //     alert("ready() jQuery 방법3");
+        // });
+
+        // 방법4
+        $(function(){
+            alert("ready() jQuery 방법4");
+        });
+    </script>
+</head>
+<body>
+    <h1>ready() 실행</h1>
+</body>
+</html>

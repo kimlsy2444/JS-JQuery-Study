@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOMLoade Event와 Window의 load이벤트의 차이점</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        // ready함수는 외부 이미지나 컨텐츠를 다 로딩이 안되고 DOM객체가 생성된 후 이벤트가 발생
+        // $(document).ready(function(){
+        //     var $image = $("#image")
+        //     console.log("이미지의 너비 : "+$(image).width());
+        // });
+
+        // window.onload이벤트는 외부 이미지나 컨텐츠를 다 로딩이 된 후 발생하는 이벤트
+        window.onload = function(){
+            console.log("이미지의 너비 : "+$(image).width())
+        }
+    </script>
+</head>
+<body>
+    <img src="images/gigu.png" id="image">
+</body>
+</html>
