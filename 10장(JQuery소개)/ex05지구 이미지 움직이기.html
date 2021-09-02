@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 VS jquery-5</title>
+    <style>
+        body {
+            font-size: 15px;
+            font-family: "굴림";
+        }
+        #panel {
+            width: 600px;
+            height: 300px;
+            border: 2px solid black;
+            position: relative;
+        }
+        #bar {
+            position: absolute;
+            left: 50px;
+            top: 190px;
+            width: 500px;
+            height: 15px; 
+            background-color: #f30;
+        }
+        #gigu {
+            position: absolute;
+            left: 50px;
+            top: 140px;
+            width: 50px;
+        }
+
+        #nav {
+            text-align: center;
+            width: 600px;
+        }
+    </style>
+    <!-- 자바 스크립트로 버튼을 클릭하면 지구 이미지가 움직이는 효과 만들기 -->
+    <!-- <script>
+        window.onload = function(){
+            var btn1 = document.getElementById("gigu");
+            var btnStart = document.getElementById("btnStart");
+
+            var left = 50;
+            var timerId = 0;
+
+            // 버튼에 이벤트 등록
+            btnStart.addEventListener("click",function(){
+                timerId = setInterval(function(){
+                    left++;
+                    gigu.style.left = left +"px";
+                     // 400px에 도달하면 타이머 종료시키기
+                    if(left >= 500){
+                    clearInterval(timerId);
+                    timerId = 0;
+                    }
+                },5);
+            });
+        }
+    </script> -->
+
+
+    <!-- jquery 이용  -->
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $gigu = $("#gigu");
+            $("#btnStart").on("click",function(){
+                // 지구 이미지 움직이기
+                $gigu.animate({
+                    left : 500
+                },3000);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <div id ="panel">
+            <div id = "bar"></div>
+            <img src="images/gigu.png" id = "gigu">
+        </div>
+        <div id = "nav">
+            <button id = "btnStart">버튼</button>
+        </div>
+    </div>
+</body>
+</html>
