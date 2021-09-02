@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String클래스-10(정규표현식을 이용한 공백제거)</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        var str = "  안녕하세요  반갑습니다  문자열을 자릅니다  ";
+        console.log("원본 문자열:"+str);
+
+        // ^ : 입력의 시작을 찾음
+        // $ : 입력의 끝을 찾음
+        // * : 앞에 오는 문자를 최소 0번이상 찾는다. (ex "zo*"를입력하면 "z"나 "zoo"를 찾는다.)
+        // + : 앞에 오는 문자를 최소 1번이상 찾는다. (ex "zo+"를입력하면 "z"는 찾지 않고 "zoo"를 찾는다.)
+        // ? : 앞에 오는 문자를 최소 0번이상 찾는다. (ex "a?ve?"를입력하면 "naver"에 있는 "ve"를 찾는다.)
+        // \s : 공백문자를 찾는다
+        // \S : 공백문자가 아닌 것을 찾는다
+        // g : 전역검색을 칭함
+
+        // 전체 공백 제거는 자바스크립트의 정규 표현식을 이용을 해야 한다.
+        console.log("전체 공백 제거:"+str.replace(/(\s*)/g,""));
+        console.log("앞 공백 제거:"+str.replace(/^\s*/,""));
+        console.log("뒷 공백 제거:"+str.replace(/\s*$/,""));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

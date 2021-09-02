@@ -1,0 +1,14 @@
+    *{
+    margin: 0;
+    padding: 0;
+    }
+    .arrBanner{
+        width: 400px;
+        height: 200px;
+        position: absolute;
+        border: 3px solid gray;
+    }
+    #arrBanner1{
+        top:  100px;
+        left: 100px;
+    }

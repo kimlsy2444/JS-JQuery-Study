@@ -1,0 +1,9 @@
+
+    #print{
+        width: 500px;
+        height:  250px;
+        text-align: center;
+        line-height: 200px;
+        vertical-align: center;
+        border: 3px solid red;
+    }

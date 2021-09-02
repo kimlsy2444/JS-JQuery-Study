@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String클래스-3(indexOf())</title>
+    <script>
+        // 문자열 위치 알아내기
+        var str = window.prompt("문자열 입력: ");
+        // indexOf()는 해당되는 문자(열)를 포함하고 있으면 그 위치를 리턴하고
+        // 포함하지 않는다면 -1를 리턴한다.
+        var index = str.indexOf("yes");
+
+        if(index >= 0 ) {
+            alert("해당된 문자(열)의 위치는 "+index+"입니다");
+        }
+        else{
+            alert("문자가 존재하지 않습니다.");
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

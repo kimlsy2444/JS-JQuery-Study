@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date클래스(현재날짜 출력)</title>
+    <link rel="stylesheet" href="css/Date.css">
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $print = $("#print");
+            // Date클래스의 인스턴스를 얻는 코드
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth(); // 0(1월)~11(12월)
+            var date1 = date.getDate();
+            var day = date.getDay(); // 0(일)~6(토)
+            var arrDay = ["일","월","화","수","목","금","토"];
+            $print.html(html = year+"년"+(month+1)+"월"+date1+"일"+arrDay[day]+"요일");
+        });
+    </script>
+</head>
+<body>
+    <div id ="print">
+
+    </div>
+</body>
+</html>

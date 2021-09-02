@@ -1,0 +1,9 @@
+
+    #clock{
+        width: 400px;
+        height:  200px;
+        text-align: center;
+        line-height: 200px;
+        vertical-align: center;
+        border: 3px solid red;
+    }

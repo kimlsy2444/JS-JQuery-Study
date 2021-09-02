@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date클래스(현재시간 출력)</title>
+    <link rel="stylesheet" href="css/Date.css">
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $print = $("#print");
+            // Date클래스의 인스턴스를 얻는 코드
+            var date = new Date();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            var msecond = date.getMilliseconds();
+            $print.html(html = hour+"시"+minute+"분"+second+"."+msecond+"m/s");
+        });
+    </script>
+</head>
+<body>
+    <div id ="print">
+
+    </div>
+</body>
+</html>

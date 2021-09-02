@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array클래스(배열 요소 첫번째,마지막, n번째 삭제하기)</title>
+    <script>
+        var menus = ["menu1","menu2","menu3","menu4"];
+        document.write("실행전 : "+menus.join(",")+"<br/>"+"<br/>");
+        // shift() : 배열에서 첫 번째 요소를 삭제하기
+        menus.shift();
+        document.write("첫 번째 배열요소 삭제 : "+menus.join(",")+"<br/>"+"<br/>");
+
+        // pop() : 배열에서 마지막 요소를 삭제하기
+        menus.pop();
+        document.write("마지막 배열요소 삭제 : "+menus.join(",")+"<br/>"+"<br/>");
+
+        // splice() : n번째 요소 삭제하기, 추가할 때 두 번째 인자값은 0으로 설정
+        var menus1 = ["menu1","menu2","menu3","menu4"];
+        menus1.splice(2,2); // 2인덱스에서 부터 2개의 배열 요소를 삭제하는 부분
+        document.write("n번째 배열요소 삭제 : "+menus1.join(",")+"<br/>"+"<br/>");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

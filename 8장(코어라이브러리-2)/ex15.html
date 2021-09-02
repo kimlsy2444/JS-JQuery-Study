@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array클래스(split()를 이용한 동적메뉴 만들기))</title>
+    <link rel = stylesheet href="css/Menu.css">
+    <script src="libs/jquery-3.6.0.min.js"> </script>
+    <script>
+        $(document).ready(function(){
+            var $menu = $("#menu");
+            var menuData = "메뉴2,메뉴3,메뉴4,메뉴5";
+
+            // String의 split()는 구분자를 기준으로 문자열을 나눠서 배열로 리턴을 한다.
+            var menuItems = menuData.split(",");
+            // 반복문을 이용하여 메뉴 추가해보도록 하자
+            for(var i=0; i<menuItems.length;i++){
+                var newItem = "<li>" + menuItems[i] +"</li>";
+                // 동적으로 메뉴 아이템을 추가하는 부분
+                $menu.append(newItem);
+            }
+        });
+    </script>
+</head>
+<body>
+    <ul id ="menu">
+        <li>메뉴1</li>
+    </ul>
+</body>
+</html>

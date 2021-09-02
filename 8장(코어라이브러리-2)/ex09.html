@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String클래스-9(오른쪽공백만 제거)</title>
+    <style>
+        body{
+            font-size: 20px;
+        }
+        #input{
+            width:  300px;
+        }
+        #output{
+            width: 600px;
+            height: 200px;
+            border: 2px solid red;
+            text-align: left;
+            vertical-align: top;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        var $output = $("#output");
+        var $input = $("#input");
+        // 버튼 이벤트 등록
+        $("#confirm").click(function(){
+                // 입력한 값을 알아내기
+                var value = $input.val();
+                 // 뒤쪽 공백 문자 제거
+                var result = rtrim(value);
+                $output.html(value+"<br/>");
+                $output.html(result);
+            });
+        });
+        function rtrim(str){
+        // 문자열이 없는 경우
+        if(str.length <=0){
+            return "";
+        }
+        // 뒤쪽 첫 번째 문자가 공백이 아니라면 검사할 필요가 없기 때문
+        // -1 :배열은 인덱스 0부터 시작하므로 -1을 하였다.
+        var firstChar = str.charAt(str.length-1);
+            if(firstChar != " "){
+                return str;
+        }
+        var index =1 ;
+       // 공백이 끝나는 위치찾기
+        for(index=str.length-1;index>=0; index--){
+           // 공백 문자가 아닐때까지 찾기
+            var ch = str.charAt(index);
+            if(ch != " "){
+            // 공백이 아니다라는 것은 곧 문자를 의미
+                index++;
+                break;
+            }
+        }
+        // 0번째 인덱스 부터 index변수까지의 문자열을 잘라내고
+        var result = str.slice(0,index);
+            return result;
+    }
+    </script>
+</head>
+<body>
+    <div>
+        <input type = "text" id = "input">
+        <button id ="confirm">확인</button>
+    </div>
+    <br/>
+    <textarea id ="output">실행결과</textarea>
+</body>
+</html>

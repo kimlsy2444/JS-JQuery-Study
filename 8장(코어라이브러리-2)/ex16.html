@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array클래스(배열 요소 첫번째,마지막, n번째 추가하기)</title>
+    <script>
+        var menus = ["menu1","menu2","menu3","menu4"];
+        document.write("실행전 : "+menus.join(",")+"<br/>"+"<br/>");
+
+        // push() 배열의 마지막 부분에 배열 요소를 추가함
+        menus.push("menu5");
+        document.write("push() 실행후 : "+menus.join(",")+"<br/>"+"<br/>");
+        
+        // unshift() 배열의 처음 부분에 배열 요소를 추가함.
+        menus.unshift("menu0");
+        document.write("unshift() 실행후 : "+menus.join(",")+"<br/>"+"<br/>");
+
+        // splice() 배열의 n번째 부분에 배열 요소를 추가함
+        menus.splice(2,0,"추가");
+        document.write("splice() 실행후 : "+menus.join(",")+"<br/>");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

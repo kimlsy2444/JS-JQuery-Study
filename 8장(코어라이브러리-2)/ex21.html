@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 이미지</title>
+    <link rel="stylesheet" href="css/Flag.css">
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $arrBanner = $(".arrBanner");
+            var i = 0;
+            var imgList = ["canada.png","england.png","germany.png","italia.png","korea.png","spain.png","usa.png"];
+
+            setInterval(function(){
+                i++; // 다음 인덱스 구하기
+                // 인덱스 범위 다시 롤링하기 위해서 인덱스를 0 으로 설정
+                if(i >= imgList.length){
+                    i = 0;
+                }
+                // 배열에서 이미지 이름을 얻기
+                var imgName = imgList[i];
+                // 속성 설정하는 부분(이미지 출력)
+                $arrBanner.attr("src","images/"+imgName);
+            },1000);
+        });
+    </script>
+</head>
+<body>
+    <img src="images/korea.png" class="arrBanner" id="arrBanner1">
+</body>
+</html>

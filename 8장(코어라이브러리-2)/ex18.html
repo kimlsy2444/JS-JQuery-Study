@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array클래스(정렬 - 문자열)</title>
+    <script>
+        var descNames = ["이채영","이나경","이서연","백지헌","송하영"];
+        document.write("실행전 :  "+descNames.join()+"<br/>"+"<br/>");
+        // sort()는 문자나 문자열 기반으로 오름차순 정렬
+        descNames.sort();
+        document.write("오름차순 정렬 후 : "+ descNames.join()+"<br/>"+"<br/>");
+
+        var ascNames = ["이채영","이나경","이서연","백지헌","송하영"];
+        document.write("실행전 :  "+ascNames.join()+"<br/>"+"<br/>");
+        // 문자(열) 기반으로 내림차순으로 정렬하을 하고자 한다면 아래와 같이 정렬 기준을
+        // 익명함수로 제공을 해야한다.
+        ascNames.sort(function(a,b){
+            if(a > b) return -1;
+            if(a < b) return +1;
+        });
+        document.write("내림차순 정렬후 :  "+ascNames.join()+"<br/>"+"<br/>");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
