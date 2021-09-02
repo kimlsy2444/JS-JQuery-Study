@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-5(이벤트-설명감추기, 보이기 이벤트)</title>
+    <link rel="stylesheet" href="css/coffee.css">
+</head>
+<body>
+    <div id="container">
+        <h1 id="heading">커피잔의 종류</h1>
+        <div id="prod-pic">
+            <img src="images/coffee-pink.jpg" id="cup" width="200" height="200">
+            <div id="small-pic">
+                <img src="images/coffee-pink.jpg" class="small">
+                <img src="images/coffee-blue.jpg" class="small">
+                <img src="images/coffee-gray.jpg" class="small">
+            </div>
+        </div>
+        <div id="desc">
+            <ul>
+                <li>상품명 : 커피잔</li>
+                <li class="bluetext">판매가 : 9,000원</li>
+                <li>배송비 : 3,000원</li>
+                <li>적립금 : 150원</li>
+                <li>제조일자 : 2020.10.20</li>
+                <button>장바구니 담기</button>
+            </ul>            
+            <a href="#" id="view">상세 설명 보기</a>            
+        </div>
+        <hr>
+        <div id="detail">
+            <h2>상품 상세 정보</h2>
+            <ul>
+                <li>원산지 : 대구</li>
+                <li>지역 : 대구 달서구</li>
+                <li>농장 : 대구 A농장</li>
+                <li>고도 : 1500m</li>
+                <li>키워드 : 커피잔</li>
+            </ul>
+            <h3>정보</h3>
+            <p>가나다라가나다라가나다라가나다라가나다라가나다라</p>
+            <h3>유의사항</h3>
+            <p>가나다라가나다라가나다라가나다라가나다라가나다라</p>
+        </div>
+    </div>
+    <script src="js/detailShow.js"></script>
+</body>
+</html>

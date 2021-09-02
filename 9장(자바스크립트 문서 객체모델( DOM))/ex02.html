@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-2(요소접근)</title>
+    <style>
+        #container{
+            width: 800px;
+            height: 500px;
+            margin: 0px;
+            padding: 20px 10px 0 50px;
+            border:  2px solid #ccc;
+        }
+        #img_load, #desc{
+            float: left;
+        }
+        #img_load img{
+            border: 1px solid #ccc;
+        }
+        #img_load{
+            margin-right: 10px;
+        }
+        .spn{
+            font-weight: 700;
+            font-size: 1.0em;
+            font-style: italic;
+        }
+        .bright{
+            color: blue;
+        }
+        h1{
+            font-size: 1.8em;
+        }
+        h2{
+            font-size: 1.3em;
+            color: #222;
+
+        }
+        p{
+            font-size: 0.9em;
+            line-height: 1.4;
+            text-align: justify;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <h1 id="text_head">국회의사당</h1>
+        <div id="img_load">
+            <img src="images/load.png">
+        </div>
+        <div>
+            <h2>Information</h2>
+            <p>국회의사당은 언제 설립이 되었는가?<span class="spn">대통령</span></p>
+            <h2>Note</h2>
+            <p class="bright">국회의사당은 모든 국회의원이 모여서 안건 제시, 제정한다.</p>
+        </div>
+    </div>
+    </div>
+
+
+</body>
+</html>

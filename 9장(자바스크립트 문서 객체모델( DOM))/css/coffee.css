@@ -1,0 +1,85 @@
+#container {
+    width: 600px;
+    margin: 0 auto;            
+}
+#prod-pic, #desc {
+    float: left;
+}
+#prod-pic {
+    margin: 20px 20px auto 10px; 
+    padding: 0;          
+}
+#cup {
+    box-shadow: 1px 1px 2px #eee;
+    outline: 1px dashed #eee;
+    outline-offset: -7px;
+}
+#small-pic {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+}
+.small {
+    width: 60px;
+    height: 60px;
+}
+#small-pic img:hover {
+    cursor: pointer;
+}
+#desc {
+    width: 300px;
+    padding-top: 20px;
+    margin-bottom: 50px;
+}
+.bluetext {
+    color: blue;
+    font-weight: bold;
+}
+#desc button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+}
+#desc ul {
+    list-style: none;
+}
+#desc li {
+    font-size: 0.9em;
+    line-height: 1.8;
+}
+#desc a {
+    text-decoration: none;
+    font-size: 0.9em;
+    color: blue;
+    padding-left: 40px;
+}
+hr {
+    clear: both;
+    border: 1px dashed gray;
+}
+#detail {
+    padding-top: 15px;
+    display: none;
+}
+#detail li {
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+h1 { 
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.5em;
+    color: gray;
+    font-weight: normal;            
+}
+h3 {
+    font-size: 1.1em;
+    color: #222;
+}
+p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    text-align: justify;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-3(속성 변경)</title>
+    <style>
+        #container {
+            width: 600px;
+            margin: 0 auto;            
+        }
+        #prod-pic, #desc {
+            float: left;
+        }
+        #prod-pic {
+            margin: 20px 20px auto 10px;           
+        }
+        #cup {
+            box-shadow: 1px 1px 2px #eee;
+            outline: 1px dashed #eee;
+            outline-offset: -7px;
+        }
+        #small-pic {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0%;
+        }
+        .small {
+            width: 60px;
+            height: 60px;
+        }
+        #small-pic img:hover {
+            cursor: pointer;
+        }
+        #desc {
+            width: 300px;
+            padding-top: 20px;
+            margin-bottom: 50px;
+        }
+        .bluetext {
+            color: blue;
+            font-weight: bold;
+        }
+        #desc button {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            padding: 10px;
+        }
+        #desc ul {
+            list-style: none;
+        }
+        #desc li {
+            font-size: 0.9em;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 id="heading">커피잔의 종류</h1>
+        <div id="prod-pic">
+            <img src="images/coffee-pink.jpg" id="cup" width="200" height="200">
+            <div id="small-pic">
+                <img src="images/coffee-pink.jpg" class="small">
+                <img src="images/coffee-blue.jpg" class="small">
+                <img src="images/coffee-gray.jpg" class="small">
+            </div>
+        </div>
+        <div id="desc">
+            <ul>
+                <li>상품명 : 커피잔</li>
+                <li class="bluetext">판매가 : 9,000원</li>
+                <li>배송비 : 3,000원</li>
+                <li>적립금 : 150원</li>
+                <li>제조일자 : 2020.10.20</li>
+                <button>장바구니 담기</button>
+            </ul>
+            <a href="#" id="view">상세 설명 보기</a>
+        </div>
+    </div>
+    <script src="js/imgShow.js"></script>
+</body>
+</html>
