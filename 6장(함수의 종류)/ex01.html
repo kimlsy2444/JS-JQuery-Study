@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수-1(함수리터럴)</title>
+    <script>
+       // 변수에다가 함수를 저장하는 경우
+
+       function hi(name){
+           document.write(name+"님 환영합니다.");
+       } 
+       hi("홍길동");
+       var fhi = hi; // 함수리터럴
+       fhi("이준성");
+
+       // 익명함수를 변수에다가 대입-- 변수가 마치 함수명처럼 사용이 되는 꼴
+       var func = function(){
+           document.write("함수 리터럴");
+       }
+       func();
+       // 리터럴 : literal 이란 그자체로써 의미를 지니는 값을 말한다.
+       // ex) 100, 홍길동 등 고유 명사로써 사용되는것
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

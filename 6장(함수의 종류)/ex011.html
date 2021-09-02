@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백함수-1(일반함수)</title>
+    <script>
+        // 일반 함수를 사용하게 되면 로직 구현, 로직 처리 부분까지 아래와 같이
+        // 있으므로 코드의 중복도 있고 기능이 합쳐저 있기 때문에 유지보수에도
+        // 어려움이 존재할 것이다.
+        function calculator1(op,num1,num2){
+            var result = "";
+            switch(op){
+                case "+":
+                        result = num1 + num2;
+                        break;
+    
+                    case "-":
+                        result = num1 - num2;
+                        break;
+                        
+                    case "*":
+                        result = num1 * num2;
+                        break;
+    
+                    case "%":
+                        result = num1 % num2;
+                        break;
+                default :
+                result = "지원하지 않는 연산자";
+            }
+            document.write("주어진 2개의 수의 연산결과 :  "+result+"<br/>");
+            return result;
+        }
+
+            function calculator2(op,num1,num2){
+                var result = "";
+    
+                switch(op){
+                    case "+":
+                        result = num1 + num2;
+                        break;
+    
+                    case "-":
+                        result = num1 - num2;
+                        break;
+                        
+                    case "*":
+                        result = num1 * num2;
+                        break;
+    
+                    case "%":
+                        result = num1 % num2;
+                        break;
+                    
+                    default :
+                    result = "지원하지 않는 연산자";
+                }
+               
+                document.write("정답 : "+result+"<br/>");
+                return result;
+            }
+
+            calculator1("-",500,300);
+            calculator2("*",500,300);
+        </script>
+</head>
+<body>
+    
+</body>
+</html>

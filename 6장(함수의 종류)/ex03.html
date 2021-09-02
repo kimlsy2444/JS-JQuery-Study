@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수-3(리턴 값으로 함수를 이용)</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            function hi(){
+                document.write("하이염 방가염>_<");
+            }
+            // 버튼이 클릭이되면 hi 함수가 실행된다.즉 리턴값으로 함수가 이용된 꼴이다.
+            $("#btnStart").click(hi);
+
+        });
+    </script>
+</head>
+<body>
+    <button id ="btnStart">시작</button>
+</body>
+</html>

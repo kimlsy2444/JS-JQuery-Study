@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백함수-5(일반함수 풀이)</title>
+    <style>
+        .tab-menu {
+            /* 블릿 없애기 */
+            list-style: none; 
+            height: 80px;            
+        }
+        .tab-menu li {            
+            width: 100px;
+            height: 40px;
+            background-position-y: 0;
+            overflow: hidden;
+            display: block;
+            float: left;
+        }
+        .tab-menu li:hover {
+            background-position-y: -40px;
+        }
+        /* li중에 선택되었을 때 */
+        .tab-menu li.select {
+            background-position-y: -80px;
+            height: 80px;
+        }
+        .tab-menu li.menuitem1 {
+            background-image: url(images/newbtn.bar.1.png);
+        }
+        .tab-menu li.menuitem2 {
+            background-image: url(images/newbtn.bar.2.png);
+        }
+        .tab-menu li.menuitem3 {
+            background-image: url(images/newbtn.bar.3.png);
+        }
+        .tab-menu li.menuitem4 {
+            background-image: url(images/newbtn.bar.4.png);
+        }
+        .tab-menu li.menuitem5 {
+            background-image: url(images/newbtn.bar.5.png);
+        }
+        .tab-menu li.menuitem6 {
+            background-image: url(images/newbtn.bar.6.png);
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //탭메뉴 코드 실행될수 있도록 함수 호출
+            tabMenu("#tabmenu1");
+        });
+
+        function tabMenu(seletor) {
+            var $tabMenu = null;
+            var $menuItems = null;
+            //선택한 탭메뉴를 저장할 변수
+            var $selectedMenuItem = null;
+            //요소를 초기화
+            function init(selector){
+                $tabMenu = $(selector);
+                //6개의 웹요소인 li태그를 배열로 받고 있다.
+                $menuItems = $tabMenu.find("li");
+            }
+            //이벤트 초기화 및 등록
+            function initEvent() {
+                $menuItems.click(function(){
+                    //현재 선택된 li라는 웹요소를 매개변수로 지정하고 있다.
+                    setSelectItem($(this));
+                });
+            }   
+            //선택된 메뉴 아이템 만들어 주는 함수
+            function setSelectItem($item){
+                //선택된 메뉴가 있다면...
+                if($selectedMenuItem != null){
+                    //그 메뉴를 select를 제거하라.
+                    $selectedMenuItem.removeClass("select");
+                }
+                //매개변수로 넘어온 선택된 아이템을 대입을 하고 있다. 
+                $selectedMenuItem = $item;
+                //그 메뉴를 select를 추가해라.
+                $selectedMenuItem.addClass("select");
+
+                $("#info").html($selectedMenuItem.index());
+            }
+            init(seletor);
+            initEvent();
+        }
+    </script>
+</head>
+<body>
+    <ul class="tab-menu" id="tabmenu1">
+        <li class="menuitem1"></li>
+        <li class="menuitem2"></li>
+        <li class="menuitem3"></li>
+        <li class="menuitem4"></li>
+        <li class="menuitem5"></li>
+        <li class="menuitem6"></li>
+    </ul> 
+    <div>선택한 인덱스 값 : <span id="info"></span></div>   
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클로저 함수-2</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $("#btnStart").click(function(){
+                start();
+                document.write("시작합니다")
+            });
+
+            // 2초마다 cnt를 출력하게 된다.
+            function start(){
+                var cnt = 0;
+                setInterval(function(){
+                    cnt++; // 외부함수의 지역변수를 사용 (메모리에서 제거가 안됨)
+                    document.write(cnt);
+                },2000);
+            }
+
+        });
+    </script>
+</head>
+<body>
+    <button id ="btnStart">시작</button>
+</body>
+</html>

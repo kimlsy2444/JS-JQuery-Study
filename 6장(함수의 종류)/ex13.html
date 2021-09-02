@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백함수-3(콜백함수 풀이)</title>
+    <script>
+        function add(n1,n2,callback){
+            var  temp = n1 + n2;
+            callback(temp)
+            document.write("add() 함수 : "+temp);
+        }
+
+        function result(value){
+            document.write("result() 함수 : "+value);
+        }
+
+        add(100,20,result);
+    
+    </script>
+</head>
+
+<body>
+    
+</body>
+</html>

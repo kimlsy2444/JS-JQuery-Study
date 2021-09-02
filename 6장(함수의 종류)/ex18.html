@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클로저 함수-1</title>
+    <script>
+        // 일반함수에서 지역변수는 함수가 종료가 되면 
+        // 같이 메모리에서 제거가 되는게 일반적
+
+        // function add(){
+        //     var cnt = 0;
+        //     cnt ++;
+        //     return cnt;
+        // }
+        // document.write("1. cnt 값 : "+add()+"<br/>");
+        // document.write("2. cnt 값 : "+add()+"<br/>");
+        // document.write("3. cnt 값 : "+add()+"<br/>");
+        // document.write("4. cnt 값 : "+add()+"<br/>");
+        // document.write("5. cnt 값 : "+add()+"<br/>");
+
+        // 클로저 이용
+        function creatCounter(){
+            var cnt = 0; // 지역변수를 선언했다.
+            // add()는 클로저 함수가 된다.
+            function add(){
+                cnt ++;  // 외부함수의 지역변수를 이용하고 있다. 
+                        //메모리에서 제거가 안된다.(클로저 현상)
+                return cnt;
+            }
+            return add;
+        }
+
+        var counter = creatCounter(); // 함수 리터럴
+        document.write("1. cnt 값 : "+counter()+"<br/>");
+        document.write("2. cnt 값 : "+counter()+"<br/>");
+        document.write("3. cnt 값 : "+counter()+"<br/>");
+        document.write("4. cnt 값 : "+counter()+"<br/>");
+        document.write("5. cnt 값 : "+counter()+"<br/>");
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

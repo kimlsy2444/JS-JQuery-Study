@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백함수-5(콜백함수 풀이)</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //함수를 시작과 동시에 호출을 하고 있다.
+            checkCount(showAlert);
+        });
+        // 일반함수 로직 처리 부분
+        function showAlert(){
+            alert("완료되었습니다.");   
+        }
+        // 콜백함수를 이용한 풀이
+        function checkCount(callback){
+            var count = 0;
+            $("#btnStart").click(function(){
+                count++;
+                if(count >= 5 ){
+                    callback();
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <button id ="btnStart">시작</button>
+</body>
+</html>

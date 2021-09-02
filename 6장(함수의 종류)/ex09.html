@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수-9(중첩함수로 되어진 사칙연산)</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        function calculator(op,num1,num2){
+            var result = "";
+
+            switch(op){
+                case "+":
+                    result = add(num1,num2);
+                    break;
+
+                case "-":
+                    result = sub(num1,num2);
+                    break;
+                    
+                case "*":
+                    result = mul(num1,num2);
+                    break;
+
+                case "%":
+                    result = div(num1,num2);
+                    break;
+                
+                default :
+                result = "지원하지 않는 연산자";
+            }
+            return result;
+
+            // 위 switch문에서 사용한 각각의 함수를 중첩함수로 구현
+            function add(num1,num2){
+              return num1+num2;
+            }
+
+            function sub(num1,num2){
+              return num1-num2;
+            }
+
+            function mul(num1,num2){
+              return num1*num2;
+            }
+
+            function div(num1,num2){
+              return num1%num2;
+            }
+
+         
+        }
+
+        document.write("결과 : "+ calculator("+",100,200) +"<br/>");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
