@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성으로 노드 찾기</title>
+    <style>
+        body{
+            font-size: 15px;
+            font-family: "굴림";
+        }
+        div , p , ul, li{
+            border: 1px solid gray;
+            margin: 10px;
+        }
+        ul{
+            padding: 10px;
+        }
+        li.select{
+            background-color: #ccc;
+        }
+    </style>
+
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        // 속성 옵션
+        // $("E[A]")    : 속성 A를 포함한 모든 E노드를 찾기
+        // $("E[V]")    : 속성 A의 값이 V인 모든 E노드를 찾기
+        // $("E[A^=V]") : 속성 A의 값이 V로 시작하는 모든 E노드를 찾기
+        // $("E[A$=V]") : 속성 A의 값이 V로 끝나는 모든 E노드를 찾기
+        // $("E[A*=V]") : 속성 A의 값이 V를 포함하고 있는 모든 E노드를 찾기
+
+        // $(document).ready(function(){
+        //     class 속성으로 되어 있는 태그들에게 아래 css()적용함.
+        //     $("[class]").css("border","5px solid red");
+
+        //     id 속성으로 되어 있는 태그들에게 아래 css()적용함.
+        //     $("[id]").css("border","5px solid red");
+        // });
+
+        $(document).ready(function(){
+            // 속성 class의 값이 test를 포함하고 있는 모든 노드를 찾기
+            // $("[class*=test]").css("border","5px solid red");
+
+        // 속성 class의 값이 m으로 시작하는 모든 노드를 찾기
+            $("[class^=m]").css("border","5px solid red");
+
+        // 속성 class의 값이 a으로 끝나는모든 노드를 찾기
+            $("[class&=a]").css("border","5px solid red");
+        });
+    </script>
+
+</head>
+<body>
+    <div id = "samplePage" class="page">
+        샘플페이지(div id = "samplePage" class="page")
+    </div>
+    <div id = "header">
+        헤더 영역(div id = "header")
+    </div>
+    <div id ="content" class="sample-content">
+        노드 찾기(div id ="content" class="sample-content")
+        <ul class ="menu">
+            일반 노드 찾기(ul class ="menu")
+            <li data-value="1">id로 찾기(li data-value ="1")</li>
+            <li class="select">tag로 찾기(li  class="select")</li>
+            <li data-value="2">class로 찾기(li data-value ="2")</li>
+            <li class="test1">속성로 찾기(li class="test1")</li>
+        </ul>
+        <div class="content-data">
+            자식 노드 찾기(div class="content-data")
+                <p class="test1">1. 모든 자식 노드찾기(p class="test1")</p>
+                <p>2. 특정 자식노드만 찾기(p)</p>
+                <p class="test2">2. 마지막노드찾기(p class="test2")</p>
+        </div>
+    </div>
+    <div id = "footer">
+        푸터 영역(div id = "footer")
+    </div>
+</body>
+</html>
