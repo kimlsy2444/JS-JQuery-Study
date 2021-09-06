@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 다루기-each</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        //     순차적으로 노드를 접근하여 그 인덱스를 출력하고 있다.
+        //     $(".container li").each(function(indenx){
+        //     document.write("index : "+indenx+"<br/>");
+        // });
+
+        // 순차적으로 노드를 접근하여 그 인덱스와 HTMLLiElement를 출력하고 있다.
+        // jQuery객체.textContent를 하게 되면 해당하는 값을 출력을 할 수 있다.
+            $(".container li").each(function(indenx,item){
+            document.write("index : "+indenx+", "+item.textContent+"<br/>");
+        });
+    });
+    </script>
+</head>
+<body>
+    <ul class="container">
+        <li>송하영</li>
+        <li>장규리</li>
+        <li>이새롬</li>
+        <li>이채영</li>
+        <li>백지헌</li>
+    </ul>
+</body>
+</html>

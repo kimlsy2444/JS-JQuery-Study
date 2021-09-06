@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 다루기-length</title>
+    <style>
+        body{
+            cursor: pointer;
+        }
+        div{
+            width: 50px;
+            height: 50px;
+            float: left;
+            background-color: brown;
+
+            margin: 10px;
+        }
+        span{
+            color: black;
+        }
+    </style>
+
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(document.body).click(function(){
+                $(document.body).append($("<div>"));
+                // div노드를 찾아서 길이를 구하고 출력을 하고있다. 
+                var length = $("div").length;
+                $("span").text("div 태그의 갯수 : "+length);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div></div>
+    <span></span>
+</body>
+</html>
