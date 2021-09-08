@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>노드 생성-생성된 노드 추가 및 자바스크립트 확인</title>
+    <title>노드 생성-jQuery로 추가하기(prepend(), prependTo())</title>
     <style>
         body{
             font-size: 15px;
@@ -26,23 +26,21 @@
         $(document).ready(function(){
             var cnt = 6;
             $("#btnAdd").click(function(){
-                cnt++;
-                // 신규 노드를 만들고 있다.
-                // var $li = $("<li>메뉴"+cnt+"</li>");
-                // // li객체를 출력한다.
-                // console.log($li.get(0));
-                // // HTML Li Element를 출력하고 있다. 
-                // document.write($li.get(0));
-                
-                // jSP 사용시
-                // var li = document.createElement("li");
-                // var liText =document.createTextNode("메뉴"+cnt);
-                // var menu = document.getElementById("menu");
-                // // Text노드를 li노드 에게 추가
-                // li.appendChild(liText);
-                // // menu선택자 노드에게 li노드를 추가 
-                // menu.appendChild(li);
+                // 신규 노드를 생성하는데 문자열을 이용해서 바로 추가하는 방법
+                // prepend(),prependTo()는 맨 첨 자식 노드로 추가가 된다.
+                // $("#menu").prepend("<li>메뉴"+cnt+"</li>");
+
+                // 신규 노드를 직접 생성하여 추가하는 방법 (prepend)
+                var $li = $("<li>메뉴"+cnt+"</li>");
+                // $("#menu").prepend($li);
+
+                // 신규 노드를 직접 생성하여 추가하는 방법 (prependTo)
+                // $li.prependTo("#menu");
+
+                // 신규 노드를 직접 생성하여 추가하는 방법 (insertBefore())
+                $li.insertBefore("#menu li:first");
             });
+        
         });
     </script>
 </head>
