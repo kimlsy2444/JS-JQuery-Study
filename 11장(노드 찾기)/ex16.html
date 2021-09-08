@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 다루기- 부모 노드 찾는 방법</title>
+    <style>
+        body{
+            font-size: 15px;
+            font-family: "굴림";
+        }
+        div , p , ul, li{
+            border: 1px solid gray;
+            margin: 10px;
+        }
+        ul{
+            padding: 10px;
+        }
+        li.select{
+            background-color: #ccc;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $menu = $("ul.menu");
+            // 아래 코드는 부모 노드를 구하는 코드
+            // $menu.parent().css("border" ,"2px solid blue");
+            // 아래 코드는 조상 노드를 구하는 코드
+            // $menu.parent().parent().css("border" ,"2px solid blue");
+            // 아래 코드는 $menu 부모를 포함한 모드 조상에게 스타일을 입힌다.
+            // menu.parents().css("border" ,"2px solid blue");
+            // 특정 조상 노드를 구하는 코드
+            // $menu.parents(".page").css("border" ,"2px solid blue");
+
+            
+        
+        });
+    </script>
+</head>
+<body>
+    <div id="samplePage" class="page">
+        샘플페이지(div, id=samplePage, class=page)
+        <div id="header" class="test1">
+            헤더 영역(div, id=header)
+        </div>
+        <div id="content" class="sample-content">
+            노드 찾기(div, id=content class=sample-content)
+            <ul class="menu">
+                일반 노드 찾기(ul, class=menu)
+                <li data-value="1">id로 찾기(li, data-value=1)</li>
+                <li class="select">tag로 찾기(li, class=select)</li>
+                <li data-value="2">class로 찾기(li, data-value=2)</li>
+                <li class="test1">속성으로 찾기(li, class=test1)</li>
+            </ul>
+            <div class="content-data">
+                자식 노드 찾기(div, class=content-data)
+                <p class="test1">1. 모든 자식 노드 찾기(p, class=test1)</p>
+                <p>2. 특정 자식 노드만 찾기(p)</p>
+                <p class="test2">2. 마지막 자식 노드 찾기(p, class=test2)</p>
+            </div>
+        </div>
+        <div id="footer">
+            푸터 영역(div, id=footer)
+        </div>
+    </div>    
+</body>
+</html>

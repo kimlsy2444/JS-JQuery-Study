@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 다루기- 특정 노드의 자식 노드 중에서 N번째 자식 노드 찾는 방법</title>
+    <style>
+        body{
+            font-size: 15px;
+            font-family: "굴림";
+        }
+        div , p , ul, li{
+            border: 1px solid gray;
+            margin: 10px;
+        }
+        ul{
+            padding: 10px;
+        }
+        li.select{
+            background-color: #ccc;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $menu = $("ul.menu");
+            // 아래 코드는 선택자 :eq(1)를 사용한코드
+            // $menu.children(":eq(1)").css("background", "pink");
+            // 아래 코드는 eq(1)를 사용한 코드 - 최적화 부분이 있지만 큰 영향은 없다.
+            // $menu.children().eq(1).css("background", "pink");
+        });
+    </script>
+</head>
+<body>
+    <div id="samplePage" class="page">
+        샘플페이지(div, id=samplePage, class=page)
+        <div id="header" class="test1">
+            헤더 영역(div, id=header)
+        </div>
+        <div id="content" class="sample-content">
+            노드 찾기(div, id=content class=sample-content)
+            <ul class="menu">
+                일반 노드 찾기(ul, class=menu)
+                <li data-value="1">id로 찾기(li, data-value=1)</li>
+                <li class="select">tag로 찾기(li, class=select)</li>
+                <li data-value="2">class로 찾기(li, data-value=2)</li>
+                <li class="test1">속성으로 찾기(li, class=test1)</li>
+            </ul>
+            <div class="content-data">
+                자식 노드 찾기(div, class=content-data)
+                <p class="test1">1. 모든 자식 노드 찾기(p, class=test1)</p>
+                <p>2. 특정 자식 노드만 찾기(p)</p>
+                <p class="test2">2. 마지막 자식 노드 찾기(p, class=test2)</p>
+            </div>
+        </div>
+        <div id="footer">
+            푸터 영역(div, id=footer)
+        </div>
+    </div>    
+</body>
+</html>

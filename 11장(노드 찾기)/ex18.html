@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 클릭시 인덱스 출력하는 프로그램</title>
+    <style>
+        .tab-menu{
+            list-style: none;
+            height: 8px;
+        }
+        .tab-menu li{
+            width: 100px;
+            height: 40px;
+            background-position-y: 0;
+            text-indent: -1000px;
+            overflow: hidden;
+            display: inline block;
+            float: left;
+        }
+        .tab-menu li:hover{
+            background-position-y: -40px;
+        }
+        .tab-menu li.select{
+            background-position-y: -80px;
+            height: 80px;
+        }
+        .tab-menu li.menuitem1{
+            background-image: url(images/newbtn.bar.1.png);
+        }
+
+        .tab-menu li.menuitem2{
+            background-image: url(images/newbtn.bar.2.png);
+        }
+
+        .tab-menu li.menuitem3{
+            background-image: url(images/newbtn.bar.3.png);
+        }
+
+        .tab-menu li.menuitem4{
+            background-image: url(images/newbtn.bar.4.png);
+        }
+
+        .tab-menu li.menuitem5{
+            background-image: url(images/newbtn.bar.5.png);
+        }
+
+        .tab-menu li.menuitem6{
+            background-image: url(images/newbtn.bar.6.png);
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 클릭한 이미지의 인덱스를 출력하는 프로그램
+            // $("#tabMenu1 li").click(function(e){
+            //     alert("인덱스 값 : "+$(this).index());
+            // });
+
+            // 1초 간격으로 탭메뉴 select 적용하기
+            var currentIndex = 0;
+            var $menuItems =$("#tabMenu1 li");
+            var timerId = setInterval(function(){
+                var $item = $menuItems.eq(currentIndex);
+
+                // 위에서 찾아온 li객체에다가 select클래스를 추가하고 있다.
+                $item.addClass("select");
+                currentIndex++;
+
+                if(currentIndex >= $menuItems.length){
+                    clearInterval(timerId);
+                }
+                console.log("현재 인덱스 : "+currentIndex);
+            },1000);
+        });
+    </script>
+</head>
+<body>
+    <ul class="tab-menu" id = "tabMenu1">
+        <li class="menuitem1">구글</li>
+        <li class="menuitem2">페이스북</li>
+        <li class="menuitem3">프린터리스트</li>
+        <li class="menuitem4">트위터</li>
+        <li class="menuitem5">에어비엔비</li>
+        <li class="menuitem6">패스</li>
+    </ul>
+    
+</body>
+</html>
