@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 생성-jQuery로 노드 이동하기(insertBefore,before,insertAfter,after)</title>
+    <style>
+        body{
+            font-size: 15px;
+            font-family: "맑은 고딕";
+        }
+        ul, li{
+            border: 3px solid gray;
+            margin: 10px;
+        }
+        ul{
+            padding: 10px;
+        }
+        li.select{
+            background-color: aquamarine;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var cnt = 6;
+            $("#btnAdd").click(function(){
+                cnt++;
+                // 새로운 jQuery 객체를 생성
+                $item = $("<li>새메뉴"+cnt+"</li>");
+                // li태그에 클래스가 select인것 이전에 $item을 추가하고 있다.
+                // $item.insertBefore("#menu li.select")
+                // $("#menu li.select").Before($item);
+
+                // li태그에 클래스가 select인것 이후에 $item을 추가하고 있다.
+                // $item.insertAfter("#menu li.select")
+                $("#menu li.select").after($item);
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id = "btnAdd">추가하기</button>
+    <ul id ="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li class="select">메뉴5</li>
+        <li>메뉴6</li>
+    </ul>
+</body>
+</html>
