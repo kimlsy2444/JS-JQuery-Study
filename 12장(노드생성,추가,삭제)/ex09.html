@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 생성-jQuery 자식노드를 다수 추가하기(html(),append()) </title>
+    <style>
+        body{
+            font-size: 15px;
+            font-family: "맑은 고딕";
+        }
+        ul, li{
+            border: 3px solid gray;
+            margin: 10px;
+        }
+        ul{
+            padding: 10px;
+        }
+        li.select{
+            background-color: aquamarine;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // $("#add").click(function(){
+            //     var data = "";
+            //     for(var i =1;i<=10;i++){
+            //         // 추가할 노드 10개를 만들고 있다.
+            //         data +="<li>메뉴 "+i+"</li>";
+            //     }
+            //     // 노드내용에 적용을 하는 부분
+            //     // html() jQuery메서드를 단 1번만 호출하고 있다.
+            //     $("#menu").html(data);
+            // });
+
+        $("#add").click(function(){
+            // 위와 결과는 동일하지만 여기서는 append() jquery메서드를 10이나 호출하고있다.
+            // 매우 비효율적인 코드
+            for(var i =1;i<=10;i++){
+                $("#menu").append("<li>메뉴"+i+"</li>");
+            }
+        });
+    });
+    </script>
+</head>
+<body>
+    <button id = "add">확인</button>
+    <ul id ="menu">
+    </ul>
+</body>
+</html>

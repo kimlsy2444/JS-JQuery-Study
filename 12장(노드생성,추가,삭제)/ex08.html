@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 생성-jQuery로 메서드 html(), text()의 차이점-2</title>
+    <style>
+        body{
+            font-size: 15px;
+            font-family: "맑은 고딕";
+        }
+        ul, li{
+            border: 3px solid gray;
+            margin: 10px;
+        }
+        ul{
+            padding: 10px;
+        }
+        li.select{
+            background-color: aquamarine;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // $("#menu li").click(function(){
+            //     var $item =$(this);
+            //     // html()를 이용하여 li객체가 클릭되면 아래 마크업 언어가 추가가 되어 
+            //     // a태그로 바뀐다.
+            //     $item.html("<a href='http://www.naver.com'> 새메뉴" + (1+$item.index()));
+            // });
+
+            $("#menu li").click(function(){
+                var $item =$(this);
+                // text()를 이용하여 li객체의 텍스트 노드의 내용을 수정하고 있다.
+                $item.text("새문자열");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id = "ok">확인</button>
+    <ul id ="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li class="select">메뉴5</li>
+        <li>메뉴6</li>
+    </ul>
+</body>
+</html>
