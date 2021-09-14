@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 VS jQuery 스타일 다루기-2</title>
+    <style>
+        div {
+            margin: 20px;
+            padding: 10px;
+            font-size: 26px;
+            border: 2px solid red;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        // window.onload = function(){
+        //     var content =document.getElementById("test");
+        //     // 자바스크립트의 속성이름은 2단어가 연결된다면 낙타표기법으로 표식하고
+        //     // 값을 설정을 해야 적용된다.
+        //     content.style.fontSize = "12px";
+        //     // content.style.font-size = "12px"; // 에러발생
+        // }
+
+        // jQuery 스타일로 접근
+        $(document).ready(function(){
+            var $content = $("#test");
+            // jQuery로 스타일 속성이름에 관계 없이 그대로 사용을 해도 무방하다.
+            $content.css("fontSize","12px");
+            // $content.css("font-size","12px");
+        });
+    
+    </script>
+</head>
+<body>
+    <div id ="test" class="content" style="color: blue;"> 
+        스타일 다루기
+    </div>
+</body>
+</html>
