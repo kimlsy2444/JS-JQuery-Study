@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery를 활용한 스타일값 설정하기</title>
+    <style>
+        body{
+            font-size: 20px;
+            font-family: "고딕";
+        }
+        .menu{
+            padding: 10px;
+            list-style: none;
+            border: 2px solid black;
+        }
+        .menu li{
+            border: 1px solid aqua;
+            margin: 10px;
+        }
+        li.select{
+            background-color: brown;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $item = $(".menu il.select");
+            $("#exec").click(function(){
+                var fontSize = $item.css("fontSize");
+                console.log(fontSize);
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="exec"> 실행</button>
+    <ul class="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li class="select">메뉴3</li>
+        <li>메뉴4</li>
+        <li>메뉴5</li>
+
+    </ul>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 VS jQuery 스타일 다루기-4</title>
+    <style>
+        div {
+            margin: 20px;
+            padding: 10px;
+            font-size: 26px;
+            border: 2px solid red;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        // 자바 스크립트로 단위 생략
+        // window.onload = function(){
+        //     var content =document.getElementById("test");
+        //     // 자바 스크립트로 스타일 속성값을 변경하고자 할때 단위를 생략하면 적용이 안된다.
+        //     // 아래와 같은 코드를 추가해야 할 것이다.
+        //     content.style.fontSize = "8px";
+        //     content.style.fontSize = 8; // 적용 불가
+        // }
+
+        // jQuery 스타일로 접근
+            $(document).ready(function(){
+                var $content = $("#test");
+                //$content.css("fontSize","8px");
+                // 기본적 단위인 px이 적용된다.
+                $content.css("fontSize",8);
+                
+            });
+    </script>
+</head>
+<body>
+    <div id ="test" class="content" style="color: blue;"> 
+        스타일 다루기
+    </div>
+</body>
+</html>
