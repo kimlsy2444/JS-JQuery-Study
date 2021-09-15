@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jQuery를 활용한 스타일값 설정하기-1</title>
+    <title>jQuery를 활용한 단일, 다중 클래스 추가하기(addclass())</title>
     <style>
         body{
             font-size: 20px;
@@ -20,27 +20,29 @@
             margin: 10px;
         }
         li.select{
-            background-color: brown;
+            background-color: black;
+            color: #fff;
+            font-size: 30px;
+        }
+        li.border{
+            border: 5px solid yellowgreen;
         }
     </style>
     <script src="libs/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
-            var $item = $(".menu li.select");
-            $("#exec").click(function(){
-                // 폰트 사이즈 값을 알아내어서 숫자로 바꾸고 있는 코드
-                var fontSize = parseInt($item.css("fontSize"));
-                // console.log(fontSize);
-                // 폰트 크기를 설정하는데 클릭할 때마다 1씩 증가가 된다.
-                $item.css("fontSize",fontSize +1);
-                
+            // li객체에 클릭 이벤트를 등록을 하고 있다.
+            $(".menu li").click(function(){
+                // 클릭된 li에게 select클래스를 추가하고 있다.(단일 클래스)
+                // $(this).addClass("select");
+                // 클릭된 li에 select와 border클래스를 추가를 하고 있다.(다중 클래스)
+                $(this).addClass("select border");
             });
         });
 
     </script>
 </head>
 <body>
-    <button id="exec"> 실행</button>
     <ul class="menu">
         <li>메뉴1</li>
         <li>메뉴2</li>

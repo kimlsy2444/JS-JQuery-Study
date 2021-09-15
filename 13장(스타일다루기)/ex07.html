@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jQuery를 활용한 스타일값 설정하기-1</title>
+    <title>jQuery를 활용한 스타일값 설정하기-2</title>
     <style>
         body{
             font-size: 20px;
@@ -26,14 +26,17 @@
     <script src="libs/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
-            var $item = $(".menu li.select");
             $("#exec").click(function(){
-                // 폰트 사이즈 값을 알아내어서 숫자로 바꾸고 있는 코드
-                var fontSize = parseInt($item.css("fontSize"));
-                // console.log(fontSize);
-                // 폰트 크기를 설정하는데 클릭할 때마다 1씩 증가가 된다.
-                $item.css("fontSize",fontSize +1);
-                
+                // 기본 폰트 사이즈를 16으로 설정
+                var size  = 16;
+                // each()로 li개수 만큼 루프 돌기
+                $(".menu li").each(function(i){
+                    $(this).css({
+                        fontSize : size
+                    });
+                    // 폰트 사이즈가 10씩 증가가 됨
+                    size += 10;
+                });
             });
         });
 

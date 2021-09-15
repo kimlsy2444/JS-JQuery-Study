@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery를 활용한 글자의 랜덤 크기 및 랜덤 색상 출력하기</title>
+    <style>
+        #panel {
+            width: 600px;
+            overflow: visible;
+            border: 2px solid red;
+            font-size: 20px;
+        }        
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        var cnt = 0;
+        var $panel = null;
+
+        $(document).ready(function(){
+            //초기화
+            init();
+            //타이머 시작
+            start();
+        });
+
+        function init() {
+            $panel = $("#panel");
+        }
+        function start() {
+            //1초마다 addTag함수를 호출하는 것
+            setInterval(addTag, 1000);
+        }
+
+        function addTag() {
+            //span태그를 동적으로 생성하여 얻기
+            var $span = $("<span></span>");
+            //스타일 값 생성하기
+            //색상을 16진수로 랜덤하게 구하고 있는 코드
+            var color = "#" + (parseInt(Math.random() * 0xffffff)).toString(16);
+            //10px~50px사이의 글자크기를 구하고 있는 코드
+            var fontSize = (10 + parseInt(Math.random() * 40)) + "px";
+            //위에서 구한 스타일 설정하기
+            $span.css({
+                color : color,
+                fontSize : fontSize,
+                display : "inline-block"
+            });
+            cnt++;
+            //span태그 안에 cnt를 추가하고 있는 코드
+            $span.html(cnt);
+            //패널의 span객체를 추가함으로써 자식노드를 계속 추가를 하는 코드
+            $panel.append($span);
+        }              
+    </script>
+</head>
+<body>   
+    <div id="panel">  
+    </div>
+</body>
+</html>
