@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성값 읽기-2(attr(),data())</title>
+    <style>
+        body{
+            font-size: 25px;
+        }
+        .content{
+            text-align: center;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $content = $(".content");
+            // 속성값 알아내기
+            // data()는 data-로 시작하는 모든 속성값을 Object값으로 리턴해준다.
+            console.log("data() = ",$content.data());
+            // data-name값을 출력하고 있다.
+            console.log("data(name) = ",$content.data("name"));
+            // attr()로도 data-name값을 출력하고 있다.
+            console.log("attr(data-name) = ",$content.attr("data-name")); 
+            /// data()는 data-로 시작하는 값만 출력함을 알수있다.
+            console.log("data(temp-data) = ",$content.data("temp-data")); 
+            // attr()는 temp-data도 출력되는 것을 알 수가 있다.
+            console.log("attr(temp-data) = ",$content.attr("temp-data")); 
+
+        });
+    </script>
+</head>
+<body>
+    <div class="content" data-name="스파크" data-tel="01011114444"
+    data-img="images/codingBrother.png" temp-data="test">
+        <p class="name">jquery</p>
+        <p class="tel">01044441111</p>
+        <img src="images/codingBrother.png">
+    </br>
+    <a href="https://www.naver.com/">네이버</a>
+    </div>
+</body>
+</html>
