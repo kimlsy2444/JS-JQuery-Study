@@ -1,0 +1,21 @@
+body{
+    font-size: 20px;
+    font-family: "고딕";
+}
+.panel{
+    width: 850px;
+    height: 420px;
+    border: 2px solid gray;
+}
+.nav {
+    width: 850px;
+    text-align: center;
+}
+button {
+    font-size: 30px;
+    margin-top: 10px;
+    padding: 5px;
+}
+button:hover{
+    background-color: brown;
+}

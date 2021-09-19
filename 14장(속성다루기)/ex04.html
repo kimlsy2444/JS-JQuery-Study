@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성값 설정-2(attr())</title>
+    <style>
+        body{
+            font-size: 25px;
+        }
+        #container{
+            width: 800px;
+            height: 950;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid red;
+            
+        }        
+        #image1,#image2,#image3{
+            width: 150px;
+        }
+
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $targerList = $(".target");
+            $targerList.click(function(){
+                // 클릭된 이미지를 jQuery변수에 저장한다.
+                var $target = $(this);
+                // 이미지의 data-falg속성값을 반대의 값으로 설정함
+                var flag = !$target.data("flag");
+                $target.data("flag",flag);
+                // 클릭이 되면서 변경된 flag변수에 따라서 조건문이 실행이 된다.
+                if(flag){
+                    $target.attr("src","images/cat.png");
+                }
+                else{
+                    $target.attr("src","images/dog.png");
+                }
+            });
+        });
+    </script>
+</head>
+<body id = "container">
+        <div>
+        <div class="pane1">
+            <p>첫 번째 이미지</p>
+            <img id ="image1" src="images/cat.png" class="target" data-flag="true">
+        </div>
+
+        <div class="pane2">
+            <p>두 번째 이미지</p>
+            <img id ="image2" src="images/cat.png" class="target" data-flag="true">
+        </div>   
+
+        <div class="pane3">
+            <p>세 번째 이미지</p>
+            <img id ="image3" src="images/cat.png" class="target" data-flag="true">
+        </div>  
+    </div>
+</body>
+</html>
