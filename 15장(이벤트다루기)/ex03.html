@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 등록(일반, 단축)</title>
+    <style>
+        body{
+            font-size: 30px;
+        }
+        #btn ,#remove{
+            font-size: 20px;
+            margin: 20px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            // 일반 이벤트 등록 on()
+            // $("#btn").on("click",function(e){
+            //     alert("반갑습니다") 
+            // });
+            
+            // 단축 이벤트 등록(click())
+            // 이 단축 이벤트는 내부적으로 on()형태로 실행이 됨을 알도록 하자.
+            // $("#btn").click(function(e){
+            //     alert("하이염");
+            // });
+
+            // $("p").on("mouseenter mouseleave",function(e){
+            //     //$("div").append("마우스가 P태그에 들어오거나 나갔습니다. "+"</br>");
+            //     console.log("마우스가 P태그에 들어오거나 나갔습니다.");
+            // })
+
+            // 이벤트를 다중으로 걸고자 할때 아래와 같이 사용하면 된다.
+            // $("p").on({
+            //     click : function(){
+            //         console.log("마우스가 P태그에 클릭되었습니다.");
+            //     },
+            //     mouseenter : function(){
+            //         console.log("마우스가 P태그에 들어왔습니다.");
+            //     },
+            //     mouseleave : function(){
+            //         console.log("마우스가 P태그에 나갔습니다.");
+            //         }
+            //     }
+            // );
+
+            // 단축 이벤트 등록
+            $("p").click(function(e){
+                console.log("마우스가 P태그에 클릭되었습니다.");
+            });
+
+            $("p").mouseenter(function(e){
+                console.log("마우스가 P태그에 들어왔습니다.");
+            });
+
+            $("p").mouseleave(function(e){
+                console.log("마우스가 P태그에 나갔습니다.");
+            });
+
+            // 이벤트 제거 방법
+            $("#remove").click(function(e){
+                // $("p").off() // 등록된 모든 이벤트 제거
+                $("p").off("click") // 등록된 클릭 이벤트 제거
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <button id="btn">실행</button>
+    <button id="remove">제거</button>
+    <p>안녕하세요</p>
+    <div>
+
+    </div>
+</body>
+</html>
