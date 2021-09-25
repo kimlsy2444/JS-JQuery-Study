@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본행동 취소</title>
+    <style>
+        body{
+            font-size: 30px;
+        }
+        
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 기본행동은 어떠한 특정태그가 이벤트를 방생하게 되면 해당 태그만이
+            // 작동하는 기본적인 행동을 의미한다
+            // preventDefault()는 기본행동을 취소해주는 기등을 가지고 있다.
+            var $test = $("#test");
+            $("#test").on("click",function(e){
+                // alert("하이염");
+                // cancelable값이 true이면 기본행동이 있다.
+                console.log(e.cancelable);
+                // 기본행동 취소
+                e.preventDefault();
+            })
+        });
+    </script>
+</head>
+<body>
+    <a href="https://www.naver.com/" id="test">네이버로 이동</a>
+
+</body>
+</html>
