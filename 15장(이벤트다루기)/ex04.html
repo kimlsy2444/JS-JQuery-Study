@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트를 단한번만 실행</title>
+    <style>
+        body{
+            font-size: 30px;
+        }
+        #btn{
+            font-size: 20px;
+            margin: 20px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 이벤트를 오직 한번만 실행하고 이후 실행되지 않게 이벤트를 제거하는 경우
+            // one()를 사용하면 된다.
+            $("#btn").one("click",function(e){
+                alert("안녕하세요.");
+            })
+        });
+    </script>
+</head>
+<body>
+    <button id="btn">실행</button>
+
+</body>
+</html>
