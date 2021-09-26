@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버블링 활용-2 라이브 이벤트(일반적 방법)</title>
+    <style>
+        body{
+            font-size: 30px;
+        }
+        #add{
+            font-size: 30px;
+        }
+        ul{
+            border: 1px solid black;
+        }
+        ul li{
+            border: 1px solid red;
+            margin: 20px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // var $menu = $(".menu");
+            // var cnt = 5;
+            // $("#add").click(function(e){
+            //     cnt++;
+            //     $menu.append("<li>메뉴"+cnt+"</li>")
+            // });
+            // // 메뉴 항목에 클릭 이벤트 등록
+            // // 단점은 동적으로 추가하는 신규메뉴는 클릭을 해도 메뉴의 정보가 출력이 안된다.
+            // // 이유는 바로 이벤트를 등록하는 시점에 신규 메뉴 항목은 등록이 되지 않아
+            // // 출력이 되지 않는다.
+            // $(".menu li").click(function(e){
+            //     alert($(this).html());
+            // });
+
+
+            // 위의 코드의 단점을 보완한 일반적인 코드
+            // 신규 메뉴가 추가 될때 마다 이벤트 리스너가 늘어난다.
+            // 코드의 효율이 나쁘다
+            var $menu = $(".menu");
+            var cnt = 5;
+            $("#add").click(function(e){
+                cnt++;
+                // 동적으로 신규 메뉴 항목 생성
+                var $newItem = $("<li>메뉴"+cnt+"</li>");
+                $menu.append($newItem);
+                // 신규 메뉴 항목에다가 클릭 이벤트를 등록
+                $newItem.on("click",function(e){
+                    alert($(this).html());
+                });
+            });
+
+            $(".menu li").click(function(e){
+                alert($(this).html());
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <button id = "add">추가</button>
+    </div>
+    <ul class="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li>메뉴5</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버블링 활용-3 라이브 이벤트(버블링 활용)</title>
+    <style>
+        body{
+            font-size: 30px;
+        }
+        #add{
+            font-size: 30px;
+        }
+        ul{
+            border: 1px solid black;
+        }
+        ul li{
+            border: 1px solid red;
+            margin: 20px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $menu = $(".menu");
+            var cnt = 5;
+            $("#add").click(function(e){
+                cnt++;
+                $menu.append("<li>메뉴"+cnt+"</li>")
+            });
+            // 버블링이 되면서 ul태그를 거치기 때문에
+            // ul태그에만 이벤트 리스너를 등록하였다.
+            // 동적으로 추가되는 메뉴항목의 대한 버블링발생을 활용하여
+            // 이벤트 리스너를 실행하게 된다.
+            // 버블링으로 가능한 코드가 되고 아울러 코드의 효율성이 높아진다.
+            $(".menu").on("click","li",function(e){
+                alert($(this).html());
+            });
+            
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <button id = "add">추가</button>
+    </div>
+    <ul class="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li>메뉴5</li>
+    </ul>
+</body>
+</html>

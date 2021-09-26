@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버블링 활용-1(하나의 이벤트 리스너를 통해서 여러 이벤트를 처리하는 코드)</title>
+    <style>
+        body{
+            font-size: 30px;
+        }
+        ul{
+            border: 1px solid black;
+        }
+        ul li{
+            border: 1px solid red;
+            margin: 20px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 아래 내용은 모든 li객체에 이벤트 리스너가 다 등록이 되어있는것
+            // 리스너가 많게 되니 효율적인 측면에서 좋은 편이 아니다.
+            // $(".menu li").on("click",function(e){
+            //     alert($(this).html());
+            // });
+            
+            // ul태그에만 이벤트 리스너  단1개만 등록 한 것이다.
+            // select를 이용하여 위의 코드에 비하여 효율적인 코드가 된다.
+            // 버블링을 이용하여 하나의 이벤트 리스너를 통해서 여러 이벤트를 처리하는 코드
+            $(".menu").on("click","li",function(e){
+                // 클릭된 태그를 출력하는 코드
+                console.log(e.target.tagName);
+                alert($(this).html());
+            });
+        });
+    </script>
+</head>
+<body>
+    <ul class="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li>메뉴5</li>
+    </ul>
+</body>
+</html>
