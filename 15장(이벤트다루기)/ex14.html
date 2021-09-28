@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouseover / mouseout 예제</title>
+    <style>
+        #parent{
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            left: 200px;
+            top: 100px;
+            background-color: red;
+        }
+        #child{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            background-color: white;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        // 전역 변수 초기화
+        var count = 0;
+        var $info = null;
+        var $child = null;
+        $(document).ready(function(){
+            $info = $("#info");
+            $child = $("#child");
+
+            // parent에 mouseover,mouseout 이벤트를 등록을 해두었는데 parent영역에만
+            // 올리면 정상적인 값이 출력되지만, child영역에 mouseover를 
+            // 하니parent.out, child.over 가 동시에 출력이 된다.
+            // mouseover,mouseout 이벤트는 부모노드와 자식노드는 별개이면서
+            // 자식노드는 독립적인 노드로 판단해서 이벤트가 발생한다.
+            $("#parent").mouseover(function(e){
+                count++;
+                $info.html($info.html()+"<br/>"+count+"."+e.target.id+".over");
+            });
+
+            $("#parent").mouseout(function(e){
+                count++;
+                $info.html($info.html()+"<br/>"+count+"."+e.target.id+".out");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="info">
+        이벤트 정보 출력
+    </div>
+    <div id="parent">
+        parent
+        <div id="child">
+            child
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouseenter / mouseleave 예제</title>
+    <style>
+        #parent{
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            left: 200px;
+            top: 100px;
+            background-color: red;
+        }
+        #child{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            background-color: white;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        // 전역 변수 초기화
+        var count = 0;
+        var $info = null;
+        var $child = null;
+        $(document).ready(function(){
+            $info = $("#info");
+            $child = $("#child");
+
+            // parent에 mouseenter,mouseleave 이벤트를 등록을 해두었는데 mouseover / mouseout
+            // 이벤트와 다르게 child영역이 독립적인 공간이 아니라 parent영역에 일부분으로
+            // 처리가 되는 것을 볼 수가 있다.
+            $("#parent").mouseenter(function(e){
+                count++;
+                $info.html($info.html()+"<br/>"+count+"."+e.target.id+".over");
+            });
+
+            $("#parent").mouseleave(function(e){
+                count++;
+                $info.html($info.html()+"<br/>"+count+"."+e.target.id+".out");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="info">
+        이벤트 정보 출력
+    </div>
+    <div id="parent">
+        parent
+        <div id="child">
+            child
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 강제발생-2(trigger())</title>
+    <style>
+    .test{
+        width: 100px;
+        height: 30px;
+        margin: 0 auto;
+        background-color: black;
+        text-align: center;
+        color: white;
+    }
+    #addtest{
+        width: 100px;
+        margin: 0 auto;
+        margin-top: 20px;
+        font-size: 20px;
+        text-align: center;
+        display: block;
+    }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var cnt = 0;
+            $("#testspan").on("click",function(e){
+                cnt++;
+                $("#testspan").text(cnt);
+            })
+            // 버튼 addtest에 클릭이벤트 리스너의 내용이 testspan에
+            // click이벤트를 발생시키도록 하고 있다.
+            $("#addtest").on("click",function(e){
+                $("#testspan").trigger("click");
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="test">
+        숫자 : <span id="testspan"><b>0</b></span>
+    </div>
+    <button id="addtest">증가</button>
+</body>
+</html>

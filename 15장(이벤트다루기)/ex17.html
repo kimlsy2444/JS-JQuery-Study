@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouseenter / mouseleave 이용 이벤트 문제점해결</title>
+    <style>
+        #parent{
+            width: 300px;
+            height: 100px;
+            position: absolute;
+            left: 200px;
+            top: 100px;
+            background-color: red;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+        #child{
+            width: 100px;
+            height: 200px;
+            position: absolute;
+            left: 100px;
+            top: 0px;
+            background-color: white;
+        }
+        #child div{
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+        #child div.over{
+            background-color: yellow;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        // 전역 변수 초기화
+        var count = 0;
+        var $info = null;
+        var $child = null;
+        $(document).ready(function(){
+            $info = $("#info");
+            $child = $("#child");
+
+            // ex15에서 생긴 문제점을 해결하기 위해
+            // mouseenter / mouseleave를 사용하여 문제점 해결
+            // 이러한 이유로 실무에서는 메뉴 UI컨텐츠 제작할 때
+            // mouseenter / mouseleave이벤트를 사용한다.
+            $("#parent").mouseenter(function(e){
+                count++;
+                $info.html($info.html()+"<br/>"+count+"."+e.target.id+".over");
+                $child.animate({
+                    top:-100
+                },300);
+            });
+
+            $("#parent").mouseleave(function(e){
+                count++;
+                $info.html($info.html()+"<br/>"+count+"."+e.target.id+".out");
+                $child.animate({
+                    top:0
+                },300);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="info">
+        이벤트 정보 출력
+    </div>
+    <div id="parent">
+        parent
+        <div id="child">
+            <div> 
+                out
+            </div>
+            <div class="over">
+                over
+            </div>
+        </div>
+    </div>
+</body>
+</html>

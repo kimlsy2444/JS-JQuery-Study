@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 정의 이벤트 만들기-2</title>
+    <style>
+    body{
+        font-size: 20px;
+        font-family: "맑은 고딕";
+    }
+    ul,li{
+        border: 1px solid gray;
+        margin: 15px;
+    }
+    ul{
+        padding: 10px;
+    }
+    li.select{
+        background-color: #ccc;
+    }
+    #output{
+        border:  2px solid black;
+        min-height:  100px;
+    }
+
+
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $output = $("#output");
+            var $menu = $(".menu");
+            var cnt = 5;
+
+            $("#add").click(function(e){
+                cnt++;
+                // 신규 메뉴 항목 생성
+                var $newItem = $("<li>메뉴"+cnt+"</li>");
+                $menu.append($newItem);
+
+                // 사용자 정의 이벤트 객체 생성
+                // 이벤트 이름 : addItem
+                var event = jQuery.Event("addItem");
+                // 이벤트 발생시 리스터로 넘길 데이터를 직접 생성
+                // 넘기는 데이터의 값 : 신규 메뉴 객체, 신규 메뉴 이름,메뉴의 길이
+                var data = [$newItem, $newItem.text(),$menu.children().length];
+                // addItem 사용자 정의 이벤트 강제로 발생시키기
+                // 단 방법1에 비해서 매개변수 2개를 주고 있다는 점을 기억하자.
+                $menu.trigger(event,data);
+            });
+            // addItem의 이벤트 리스너 등록
+            $menu.on("addItem",function(e, $item,itemName,itemLength){
+                $output.prepend("<p>추가 아이템 : "+itemName +", 아이템 갯수 : "+itemLength +"</p>");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <button id="add">추가</button>
+    </div>
+    <ul class="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li>메뉴5</li>
+    </ul>
+    <p>추가 및 삭제 정보 출력</p>
+    <div id="output"></div>
+</body>
+</html>
