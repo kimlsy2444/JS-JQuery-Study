@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부모 좌표 노드 구하기(offsetParent()활용)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 20px;
+        }
+        #parent1{
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            left: 100px;
+            top: 100px;
+            background-color: aqua;
+        }
+        #parent2{
+            margin: 50px;
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+        }
+        #child{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            left: 50px;
+            top: 100px;
+            background-color: red;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+           // 부모 좌표 노드 구하기
+            var $parent =$("#child").offsetParent();
+           // 부모의 id값 출력해보기
+           // 부모 좌표 노드는 style속성 중 postion속성이 absolut 혹은 relative속성을
+           // 가지고 있고 최근접에 있는 노드가 바로 부모 좌표 노드가 된다.
+            console.log("부모 id : "+ $parent.attr("id"));
+        });
+    </script>
+</head>
+<body>
+    <div id="parent1">
+        parent1
+        <div id="parent2">
+            parent2
+            <div id="child">
+                child
+            </div>
+        </div>
+    </div>
+</body>
+</html>

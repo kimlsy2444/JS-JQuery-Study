@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좌표값 구하기(position()활용)</title>
+    <style>
+        body{
+            font-size: 20px;
+        }
+        #panel{
+            width: 600px;
+            height: 300px;
+            border: 2px solid grey;
+        }
+        .bar{
+            position: absolute;
+            left: 50px;
+            top: 190px;
+            width: 500px;
+            height: 20px;
+            background-color: red;
+        }
+        #gigu{
+            position: absolute;
+            width: 70px;
+            left: 50px;
+            top: 120px;
+
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // gigu에 노드 구하기
+            var $gigu = $("#gigu");
+            var currentX = $gigu.position().left;
+            console.log(currentX);
+            // 버튼 이벤트 걸기
+            $("#move").click(function(e){
+                // gigu의 위치 값을 구하기
+                var currentX = $gigu.position().left + 10;
+                // gigu의 위치 값을 설정하기
+                $gigu.css("left",currentX);
+                console.log(currentX);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="panel">
+        <div class="bar"></div>
+        <img src="images/gigu.png" id="gigu">
+    </div>
+    <div>
+        <button id="move">이동</button>
+    </div>
+</body>
+</html>
