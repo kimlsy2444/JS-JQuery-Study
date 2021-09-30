@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지역 좌표 노드 설정하기(css()활용)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }        
+        body {
+            font-size: 20px;
+        }
+        #btnAlign {
+            position: absolute;
+            left: 100px;
+            top: 50px;
+            width: 100px;
+            height: 30px;
+        }
+        #parent1 {
+            position: absolute;
+            border: 1px solid black;            
+            width: 500px;
+            height: 400px;
+            left: 100px;
+            top: 100px;            
+        }
+        
+        .fish {
+            position: absolute;
+            width: 120px;
+        }
+        .fish p {
+            position: absolute;
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        #fish1 {
+            left: 50px;
+            top: 100px;
+        }
+        #fish2 {
+            left: 150px;
+            top: 200px;
+        }
+        #fish3 {
+            left: 180px;
+            top: 50px;
+        }
+        #fish4 {
+            left: 350px;
+            top: 200px;
+        }
+        #fish5 {
+            left: 50px;
+            top: 300px;
+        }
+    </style>
+    <script src="libs/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btnAlign").click(function(e){
+                //시작위치를 설정하기 위한 변수
+                var startX = 50;
+                var startY = 50;
+
+                //물고기 개수만큼 루프 돌기
+                $(".fish").each(function(index){
+                    //현재 물고기의 위치를 설정
+                    $(this).css({
+                        left : startX,
+                        top : startY
+                    });
+                    //50만큼의 위치가 이동
+                    startX += 50;
+                    startY += 50;
+                });
+            });               
+        });
+    </script>
+</head>
+<body>
+    <button id="btnAlign">정렬</button>
+    
+    <div id="parent1">
+        <div id="fish1" class="fish">
+            <p>1</p>
+            <img src="images/fish.png">
+        </div>
+        <div id="fish2" class="fish">
+            <p>2</p>
+            <img src="images/fish.png">
+        </div>
+        <div id="fish3" class="fish">
+            <p>3</p>
+            <img src="images/fish.png">
+        </div>
+        <div id="fish4" class="fish">
+            <p>4</p>
+            <img src="images/fish.png">
+        </div>
+        <div id="fish5" class="fish">
+            <p>5</p>
+            <img src="images/fish.png">
+        </div>
+    </div>
+    
+</body>
+</html>
