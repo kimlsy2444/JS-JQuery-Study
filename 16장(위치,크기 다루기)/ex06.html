@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전역위치 설정하기(offset()활용)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }        
+        body {
+            font-size: 20px;
+        }        
+        #parent1 {
+            position: absolute;
+            border: 1px solid black;            
+            width: 500px;
+            height: 400px;
+            left: 100px;
+            top: 100px;            
+        }       
+        #fish {
+            position: absolute;
+            left: 50px;
+            top: 100px;
+        }        
+    </style>
+    <script src="libs/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $fish = $("#fish");
+            //parent1에 클릭 이벤트 등록
+            $("#parent1").click(function(e){
+                //클릭한 지점의 전역 좌표를 구하는 코드
+                var left = e.pageX;
+                var top = e.pageY;
+                //전역 위치 설정하기
+                $fish.offset({
+                    left : left,
+                    top : top
+                });
+            });                      
+        });
+    </script>
+</head>
+<body>   
+    <div id="parent1">       
+        <img src="images/fish.png" id="fish">
+    </div>    
+</body>
+</html>
