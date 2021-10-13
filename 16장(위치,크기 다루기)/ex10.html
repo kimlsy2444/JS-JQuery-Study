@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤 값 구하기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }        
+        body {
+            font-size: 15px;
+        }
+        .nav {
+            margin: 30px 0 0 50px;
+        }  
+        #btn {
+            width: 50px;
+            height: 30px;
+        }
+        #container {
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            left: 50px;
+            top: 100px;
+            border: 2px solid black;
+            overflow: scroll;
+        }
+        img {
+            width: 1000px;
+        }
+
+    </style>
+    <script src="libs/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $info = $("#info");
+            var $container = $("#container");
+
+            //#btn에 클릭 이벤트를 등록
+            $("#btn").click(function(e){
+                //스크롤의 위치값 구하기
+                var str = "스크롤 left : " + $container.scrollLeft() + "<br/>";
+                str += "스크롤 top : " + $container.scrollTop();
+
+                //문자열 출력
+                $info.html(str);
+            });
+                      
+        });       
+    </script>
+</head>
+<body>
+    <div class="nav">
+        <button id="btn">확인</button>
+        <div id="info">
+            스크롤 위치 정보 출력
+        </div>
+    </div>
+
+    <div id="container">
+        <img src="images/sunrise.jpg">
+    </div>       
+</body>
+</html>
