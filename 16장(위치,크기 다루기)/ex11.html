@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤 위치값 설정하기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }        
+        body {
+            font-size: 15px;
+        }
+        .nav {
+            margin: 30px 0 0 50px;
+        }  
+        #btn {
+            width: 50px;
+            height: 30px;
+        }
+        #container {
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            left: 50px;
+            top: 100px;
+            border: 1px solid black;
+            overflow: scroll;
+        }
+        img {
+            width: 1000px;
+        }
+
+    </style>
+    <script src="libs/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $info = $("#info");
+            var $container = $("#container");
+            var scrollEnd = $container.find("img").width() - $container.width();
+
+            //#btn에 클릭 이벤트를 등록
+            $("#btn").click(function(e){
+                //스크롤의 위치 값 구하기
+                var left = $container.scrollLeft();
+                //cnt변수 초기화
+                var cnt = 0;
+
+                //타이머 실행
+                var timerID = setInterval(function(){
+                    //0.1초마다 5px만큼 왼쪽으로 스크롤
+                    left += 5;
+                    //스크롤 값을 설정
+                    $container.scrollLeft(left);
+                    //스크롤 정보를 출력
+                    cnt++;
+                    $info.html(cnt + ", left : " + left + ", scrollEnd : " + scrollEnd);
+                    //오른쪽 끝까지 스크롤이 되면 타이머를 종료하는 코드
+                    if(left >= scrollEnd){
+                        clearInterval(timerID)
+                    }
+                },100);
+            });                      
+        });       
+    </script>
+</head>
+<body>
+    <div class="nav">
+        <button id="btn">확인</button>
+        <div id="info">
+            스크롤 위치 정보 출력
+        </div>
+    </div>
+
+    <div id="container">
+        <img src="images/sunrise.jpg">
+    </div>       
+</body>
+</html>
