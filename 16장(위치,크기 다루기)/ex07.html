@@ -13,41 +13,63 @@
         body{
             font-size: 20px;
         }
+
+        #info{
+            border: 1px solid black;
+            width: 550px;
+            height: 150px;
+            margin: 50px 0 0 100px;
+        }
+
         #parent1{
             position: absolute;
             border: 1px solid black;
             width: 500px;
             height: 400px;
             left: 100px;
-            top: 100px;
+            top: 200px;
         }
+
         #fish{
             position: absolute;
-  
+            padding: 30px;
+            margin: 50px;
+            left: 50px;
+            top: 100px;
+            border: 20px solid red;
         }
         
     </style>
     <script src="libs/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function(){
+        window.onload = function(){
+            var $info = $("#info");
             var $fish = $("#fish");
-            $("#parent1").click(function(e){
-                $("#parent1").click(function(e){
-                    // 클릭한 지점의 전역 좌표를 구하는 코드
-                    var left = e.pageX;
-                    var top =  e.pageY;
-                    $fish.offset({
-                        left : left,
-                        top : top
-                    });
-                });
+            
+            // 4가지 종류에 대한 크기 구하는 코드
+            var str = "기본크기 width : "+$fish.width()+", height : " + $fish.height() +"<br/>";
+            str += "기본크기 + padding : "+$fish.innerWidth() + ",height : " +$fish.innerHeight()+"<br/>";
+            str += "기본크기 + padding + border : "+$fish.outerWidth() + ",height : " +$fish.outerHeight()+"<br/>";
+            str += "기본크기 + padding + border + margin : "+$fish.outerWidth(true) + ",height : " +$fish.outerHeight(true)+"<br/>";
 
-            });
-        });
+
+            // 지역좌표, 전역좌표 구하기
+            var localPos = $fish.position();
+            str += "지역 좌표 left : "+localPos.left+",top : "+localPos.top+"<br/>";
+
+            var globalPos = $fish.offset();
+            str += "전역 좌표 left : "+globalPos.left+",top : "+globalPos.top+"<br/>";
+            $info.html($info.html() + str);
+
+        };
     </script>
 </head>
 <body>
-    <div id="parent1">
+    <div id = "info">
+        (padding=30px, border=20px, margin=50px)
+        <br/>
+    </div>
+    <div id = "parent1">
         <img src="images/fish.png" id="fish">
     </div>
 </body>
