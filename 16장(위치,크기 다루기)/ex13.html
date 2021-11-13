@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화면(Screen)의 크기</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }        
+        #main {
+            border: 1px dotted red;
+            width: 500px;
+            margin: 50px;
+        }
+        #info {
+            border: 10px solid red;
+            position: fixed;
+            left: 120px;
+            top: 100px;
+        }
+    </style>
+    <script src="libs/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //스크린의 화면 크기를 출력-작업표시줄 다 포함하는 해상도를 출력해준다.
+            var str = "";
+            str += "screen.width : " + screen.width + "<br/>"
+            str += "screen.height : " + screen.height + "<br/>"
+            $("#info").html(str);
+            
+        });       
+    </script>
+</head>
+<body>
+    <div id="main">
+        <p>안녕1</p><p>안녕2</p><p>안녕3</p><p>안녕4</p><p>안녕5</p>
+        <p>안녕6</p><p>안녕7</p><p>안녕8</p><p>안녕9</p><p>안녕10</p>
+        <p>안녕11</p><p>안녕12</p><p>안녕13</p><p>안녕14</p><p>안녕15</p>
+        <p>안녕16</p><p>안녕17</p><p>안녕18</p><p>안녕19</p><p>안녕20</p>
+        <p>안녕21</p><p>안녕22</p><p>안녕23</p><p>안녕24</p><p>안녕25</p>
+    </div>
+    <div id="info">
+        문서의 크기를 출력
+    </div>
+</body>
+</html>
