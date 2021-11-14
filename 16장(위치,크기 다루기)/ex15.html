@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>문서(document)의 크기</title>
+    <title>윈도우의 세가지 크기 구하기</title>
     <style>
         body{
             margin: 0;
@@ -26,19 +26,19 @@
     <script src="libs/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
-            // 윈도우 크기가 변경되는 경우 document크기 출력
-            $(window).on("resize", function(){
-                showInfo();
-            });
-            showInfo();
-            // 현재 document의 크기 정보를 출력
-            function showInfo() {
-                var str ="";
-                str = "";
-                str += '$("document").width() : '+ $(document).width() +"<br/>";
-                str += '$("document").height() : '+ $(document).height() +"<br/>";
-                $("#info").html(str);
-            }
+            var str = "";
+            // 윈도우의 기본 크기 (메뉴바, 툴바, 스크롤바 제외) 내부 영역의 크기
+            str += "window.innerWidth : " + window.innerWidth + "<br/>";
+            str += "window.innerHeight : " + window.innerHeight + "<br/>";
+
+            // 윈도우의 외부 크기 (메뉴바+ 툴바, 단 스크롤바만 제외) 일반 영역의 크기
+            str += "$(window).width() : " + $(window).width() + "<br/>";
+            str += "$(window).height() : " + $(window).height() + "<br/>";
+
+            // 윈도우의 외부 크기 (메뉴바 + 툴바 + 스크롤바) 외부 영역의 크기
+            str += "window.outerWidth : " + window.outerWidth + "<br/>";
+            str += "window.outerHeight : " + window.outerHeight + "<br/>";
+            $("#info").html(str);
         });
     </script>
 </head>

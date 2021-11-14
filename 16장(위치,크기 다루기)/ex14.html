@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>문서(document)의 크기</title>
+    <title>유효한(Screen)의 크기</title>
     <style>
         body{
             margin: 0;
@@ -26,19 +26,11 @@
     <script src="libs/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
-            // 윈도우 크기가 변경되는 경우 document크기 출력
-            $(window).on("resize", function(){
-                showInfo();
-            });
-            showInfo();
-            // 현재 document의 크기 정보를 출력
-            function showInfo() {
+            // 스크린의 화면 크기를 출력 - 작업표시줄 제외한 크기를 출력해준다.
                 var str ="";
-                str = "";
-                str += '$("document").width() : '+ $(document).width() +"<br/>";
-                str += '$("document").height() : '+ $(document).height() +"<br/>";
+                str = "screen.availWidth" + screen.availWidth+"<br/>";
+                str = "screen.availHeight" + screen.availHeight+"<br/>";
                 $("#info").html(str);
-            }
         });
     </script>
 </head>
