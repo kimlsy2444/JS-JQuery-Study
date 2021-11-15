@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 위치 정보 구하기-2</title>
+    <style>
+        body {
+            font-size: 15px;
+        } 
+        #info {
+            width: 600px;   
+            height: 50px;
+            border: 1px solid blue;
+        }
+        #panel {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            border: 1px solid red;
+            margin-top: 10px;
+        }
+        #fish {
+            position: absolute;
+            left: 50px;
+            top : 120px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $fish = $("#fish");
+            var $info = $("#info");
+
+            $("#panel").click(function(e){
+                // 클릭한 위치의 값을 구하기
+                var offsetX = e.pageX - $(this).offset().left;
+                var offsetY = e.pageY - $(this).offset().top;
+
+                var strInfo = "offsetX = "+offsetX+", offsetY = "+offsetY;
+                $info.html(strInfo);
+
+                // 클릭한 위치로 물고기가 이동
+                $fish.css({
+                    left:offsetX,
+                    top:offsetY
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    
+        <div id="info">
+            마우스 클릭 정보 출력
+        </div>
+        <div id="panel">
+            <img src="images/fish.png" id="fish">
+        </div>
+    </div>
+</body>
+</html>
