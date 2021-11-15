@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윈도우의 크기 변경</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }        
+        
+        #info {
+            border: 10px solid red;            
+        }
+    </style>
+    <script src="libs/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //현재 윈도우 크기를 500,500으로 변경(잘못된 변경 방법)
+            //window.resizeTo(500,500);
+            var newWindow = null;
+
+            $("#create").click(function(){
+                //window의 open()를 통해서 새로운 윈도우를 생성해야지만 윈도우의 변경이 가능
+                newWindow = window.open("", "newWindow","width = 500, height = 500");
+            });
+            $("#resize").click(function(){
+                //신규 윈도우가 있는지 확인
+                if(newWindow) {
+                    //신규 윈도우에 크기를 설정하는 코드
+                    newWindow.resizeTo(300, 300);
+                }
+            });          
+        });       
+    </script>
+</head>
+<body>
+    <button id="create">윈도우생성</button>
+    <button id="resize">윈도우크기변경</button>
+
+    <div id="info">
+        크기 변경 버튼을 누르면 윈도우 크기가 변경
+    </div>
+
+</body>
+</html>
