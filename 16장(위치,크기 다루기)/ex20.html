@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 위치 정보 구하기</title>
+    <style>
+        body{
+            font-size: 15px;
+        }
+
+        #wrap{
+            margin: 50px;
+
+        }
+        #info{
+            width: 600px;
+            height: 50px;
+            border: 1px solid blue;
+        }
+        #panel{
+            position: relative;
+            width: 600px;
+            height: 400px;
+            border: 1px solid red;
+            margin-top: 10px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#panel").click(function(e){
+            // panel에 클릭한 전역 위치값 구하기 , 웹브라우저의 내부 영역
+            var str ="clientX : "+ e.clientX+", clientY : "+ e.clientY +"<br/>";
+            // document를 기준으로 하는 위치값 구하기
+            str +="pageX : "+ e.pageX+", pageY : "+ e.pageY +"<br/>";
+            $("#info").html(str);
+            });
+            
+        });
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="info">
+            마우스 클릭 정보 출력
+        </div>
+        <div id="panel"></div>
+    </div>
+</body>
+</html>

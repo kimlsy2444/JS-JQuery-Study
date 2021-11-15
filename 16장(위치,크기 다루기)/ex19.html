@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윈도우의 스크롤 위치 정보 구하기</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #main{
+            border: 2px dotted red;
+            width: 1500px;
+            margin: 50px;
+
+        }
+        #info{
+            border: 10px solid red;
+            position: fixed;
+            left: 120px;
+            top: 100px;
+        }
+        #gotoTop{
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(window).on("scroll",function(){
+                // 윈도우의 스크롤 위치 구하기 
+                var str = "";
+                str += "window.pageXOffset : "+ window.pageXOffset +"<br/>";
+                str += "window.pageYOffset : "+ window.pageYOffset +"<br/>";
+                // 스크롤 정보입력
+                $("#info").html(str);
+            });
+
+            // gotoTop버튼에 이벤트 증록
+            $("#gotoTop").click(function(){
+                // 화면을 기준으로 스크롤 위치 이동
+                window.scrollTo(0,0);
+                // 현재 스크롤 위치를 기준으로 이동
+                // window.scrollBy(100,100);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="main">
+        <p>안녕1</p><p>안녕2</p><p>안녕3</p><p>안녕4</p><p>안녕5</p>
+        <p>안녕6</p><p>안녕7</p><p>안녕8</p><p>안녕9</p><p>안녕10</p>
+        <p>안녕11</p><p>안녕12</p><p>안녕13</p><p>안녕14</p><p>안녕15</p>
+        <p>안녕16</p><p>안녕17</p><p>안녕18</p><p>안녕19</p><p>안녕20</p>
+        <p>안녕21</p><p>안녕22</p><p>안녕23</p><p>안녕24</p><p>안녕25</p>
+        <p>안녕26</p><p>안녕27</p><p>안녕28</p><p>안녕29</p><p>안녕30</p>
+        <button id="gotoTop">처음으로</button>
+    </div>
+    <div id="info">
+        스크롤 정보 출력
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윈도우의 크기 변경(resize)의 이벤트 처리</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #info{
+            border: 10px solid red;
+            position: fixed;
+            left: 120px;
+            top: 100px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 화면에서 윈도우(웹브라우저)의 위치를 구하기
+            var left = window.screenLeft;
+            var top  = window.screenTop;
+            console.log("윈도우 위치 left : "+ left +"윈도우 위치 Top : "+ top );
+
+            $(window).on("resize", function(){
+                var str = "";
+                str += "window.outerWidth : " + window.outerWidth +"<br/>";
+                str += "window.outerHeight : " + window.outerHeight +"<br/>";
+                // 윈도우 크기정보 출력
+                $("#info").html(str);
+            });
+        });
+    </script>
+</head>
+<body>
+
+
+    <div id="info">
+        윈도우 크기 출력
+    </div>
+</body>
+</html>

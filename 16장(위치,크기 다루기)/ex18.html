@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윈도우의 위치 설정하기</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #info{
+            border: 10px solid red;
+            position: fixed;
+            left: 120px;
+            top: 100px;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var newWindow = null;
+            $("#create").click(function(){
+                // open()를 이용하여 윈도우 생성하는 코드
+                newWindow = window.open("","newWindow","width=200, height=200");
+            });
+
+            $("#move").click(function(){
+                if(newWindow){
+                    // 화면(스크린)을 기준으로 하여 윈도우를 이동시킨다.
+                    //newWindow.moveTo(500,500);
+                    
+                    // 현재 윈도우의 위치를 기준으로 하여 윈도우를 이동시킨다.
+                    newWindow.moveBy(500,500);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="create">생성</button>
+    <button id="move">이동</button>
+    
+    <div id="info">
+        이동 정보 출력
+    </div>
+</body>
+</html>
