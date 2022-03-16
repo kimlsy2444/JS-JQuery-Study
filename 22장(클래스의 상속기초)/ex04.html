@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스의 상속의 기능 - 확장</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+		// 부모 클래스 정의(멤버는 8개)
+		function CellPhone(){
+			 // 프로퍼티 정의(2개)
+			this.model = null;
+			this.color = null;
+		}
+		DmbCellPhone.prototype = new CellPhone();
+		// 메서드 정의(6개)
+		CellPhone.prototype.powerOn = function(){
+			document. write("전원을 켭니다." + "<br/>");
+		}
+		CellPhone.prototype.powerOff = function(){
+			document. write("전원을 끕니다." + "<br/>");
+		}
+		CellPhone.prototype.bell = function(){
+			document. write("벨이 울립니다." + "<br/>");
+		}
+		CellPhone.prototype.hangUp = function(){
+			document. write("전화를 끊습니다. " + "<br/>");
+		}
+		// 매개변수가 있는 메서드
+		CellPhone.prototype.sendVoice = function(message){
+			document. write("자신 : " + message +  "<br/>");
+		}
+		CellPhone.prototype.receiveVoice = function(message){
+			document. write("상대방 : " + message +  "<br/>");
+		}
+
+		// 자식 클래스 (상속만 받았을 뿐 자신의 멤버는 하나도 없는 형태)
+		// function DmbCellPhone(){}
+
+		// 확장하고 있는 자식클래스(멤버가 12개)
+		// 결과론적으로 OOP언어를 지원하는 곳에서 상속의 최대 기능은 확장(extension)인 것이다.
+		// 부모클래스의 멤버가 1개라도 추가가 되거나 아니면 삭제가 되면 자식 클래스에 바로
+		// 영향을 끼친다.이것이 바로 직접적 관계이다.
+		// 반대로 자식클래스의 변화는 부모클래스에 아무런 영향을 끼치지 아니한다.
+		function DmbCellPhone(){
+			//  프로퍼티 정의
+			this.channel = null;
+		}
+		// 메서드 정의
+		DmbCellPhone.prototype.turnOnDmb = function(channel) {
+			this.channel = channel;
+			document.write("현재 채널 : " + channel + "번 DMB 방송 수신을 시작합니다."+"<br/>");
+		}
+		DmbCellPhone.prototype.turnOffDmb = function(){
+			document.write("DMB 방송 수신을 멈춥니다."+"<br/>");
+		}
+		DmbCellPhone.prototype.changChannelDmb = function(channel) {
+			this.channel = channel;
+			document.write("현재 채널을 " + channel + "번으로 바꿉니다."+"<br/>");
+		}
+
+
+		// 인스턴스 생성
+		var dmbCellPhone = new DmbCellPhone();
+		dmbCellPhone.powerOn(); // 전원 켜기
+		dmbCellPhone.bell();	// 벨 울리기
+		dmbCellPhone.sendVoice("하이염"); // 목소리 전달
+		dmbCellPhone.bell("방가염 ");	  // 목소리 전달
+		dmbCellPhone.hangUp();	// 전화 끊기 
+		dmbCellPhone.powerOff(); // 전원 끄기
+		document.write("======================================================"+"<br/>");
+		// 자식클래스 고유의 메서드 접근
+		dmbCellPhone.turnOnDmb(5);
+		document.write("현재 DMB 채널" +dmbCellPhone.channel+"<br/>")
+		dmbCellPhone.changChannelDmb(10);
+		document.write("현재 DMB 채널" +dmbCellPhone.channel+"<br/>")
+		dmbCellPhone.turnOffDmb();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

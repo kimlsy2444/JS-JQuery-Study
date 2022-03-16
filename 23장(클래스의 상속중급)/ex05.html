@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메서드 오버로딩-1</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+		// 더하기 함수
+		function sum(){
+			// arguments객체는 함수(메서드를) 호출할 때 전달되는 매개변수 (인자값, 인수 ,파라메터,arguments)
+			// 에 해당되는 Array형태의 객체이다. 그러나 Array객체의 내장함수를 사용할 수 없기 때문에
+			// Array객체는 아니다. 그래서 arguments객체에서 사용할 수 있는 것은 length,인덱스만 사용할 수 가 있다.
+			// 항목의 인덱스는 0부터 시작한다.
+			// 자바스크립트에서는 메서드 오버로딩을 문법적으로 지원하지 않는다.
+			// 하지만 arguments객체로 메서드 오버로딩을 흉내를 아래와 같이 낼 수가 있다.
+			// 중요한 것은 메서드 오버라이드는 modify, change라면 메서드 오버로딩은 new라고 이해하자
+			var result = 0; // 지역변수는 반드시 초기화가 필요
+			for (var i = 0 ; i< arguments.length; i++){
+				result += arguments[i];
+			}
+			return result;
+		}
+		// 매개변수를 다르게 하여 함수 호출
+		console.log(sum(10));				// 매개변수가 1개
+		console.log(sum(10,20));			// 매개변수가 2개
+		console.log(sum(10,20,30));			// 매개변수가 3개
+		console.log(sum(10,20,30,40));		// 매개변수가 4개
+		
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

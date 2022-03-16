@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메서드 오버라이드-1</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+		// 부모클래스 정의
+		function MyParent(){
+			this.property = "이준성";
+			console.log("Myparent 생성자 호출됨");
+		}
+		// 메서드 정의
+		MyParent.prototype.method = function(){
+			console.log("부모클래스의 property : " + this.property);
+		}
+
+		// 자식클래스 정의
+		function MyChild(){
+			console.log("Mychild() 생성자 호출됨");
+		}
+		// 부모클래스와 자식클래스의 상속 코드 작성
+		MyChild.prototype = new MyParent();
+		// 생성자 설정 코드
+		// consturtor 속성
+		// 일반적으로 클래스를 만들면 자동으로 prototype의 constructor 라는 프로퍼티가
+		// 묵시적으로 만들어진다. new 라는 연산자로 인스턴스화 되는 시점에 호출되는 것이다.
+		// 해당 클래스의 생성자 정보가 기본값으로 담기게 된다. constructor라는 속성으로
+		// 어떤 클래스의 인스턴스인가의 정보를 알아낼 수가 있다.
+		// 상속관계를 맺고 있는 경우의 자식클래스의 construct프로퍼티에는 기본적으로
+		// 부모클래스의 생성자가 담기게 된다.
+		MyChild.prototype.constructor = MyChild; 
+
+		// 메서드 오버라이드 코드
+		// 메서드 오버라이드는 선언부는 부모클래스의 선언부와 자식클래스의 선언부가 반드시
+		// 동일해야 하며, 구현부만 다르게 작성하는 것이다. (modify,chage)
+		MyChild.prototype.method = function(){
+			console.log("자식클래스의 property : " + this.property + "입니다.");
+		}
+		// 자식 클래스의 인스턴스 생성
+		var child = new MyChild();
+		child.method();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

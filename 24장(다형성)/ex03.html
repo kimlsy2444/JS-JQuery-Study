@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다형성 예제-3(다형성 적용 이미지 갤러리 만들기)</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <style>
+        div.image-container{
+            position: relative;
+        }
+        div.image-container img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 120px;
+        }
+        #btnHorizontal:hover{
+            background-color: red;
+        }
+        #btnVertical:hover{
+            background-color: yellow;
+        }
+        #btnRandom:hover{
+            background-color: blue;
+        }
+        #btnGrid:hover{
+            background-color: green;
+        }
+        div button{
+            font-size: 15pt;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        // 클래스 단위 프로그래밍으로 정렬하는 기능을 제공한 경우
+        $(document).ready(function(){
+            // 모든 이미지를 가지고 오기 
+            var img1= new SimpleGallery("#container1 img");
+            // 버튼 클릭 이벤트 등록 코드
+
+            // 가로로 정렬하는 부분(구현한 클래스의 인스턴스를 show()의 매개변수로 주고 있다.)
+            $("#btnHorizontal").click(function(){
+                img1.show(horizontalAlignable);
+            });
+
+            // 세로 정렬하는 부분
+            $("#btnVertical").click(function(){
+                img1.show(verticalAlignable);
+            });
+
+            // 랜덤 정렬하는 부분
+            $("#btnRandom").click(function(){
+                img1.show(randomAlignable);
+            });
+
+           // 바둑판 정렬하는 부분
+            $("#btnGrid").click(function(){
+                img1.show(gridAlignable);
+            });                
+
+        });
+
+        // 심플갤러리 클래스 정의
+        function SimpleGallery(selector){
+            this.$images = null;
+            this.init(selector);
+        }
+        // 요소 초기화
+        SimpleGallery.prototype.init = function(selector){
+            this.$images = $(selector);
+        }
+
+        // 인터페이스의 기능을 흉내내는 선언부 만드는 코드 
+        // 매개변수가 alignable이다 즉, 다시말해 alignable.align()를 구현한 클래스만이
+        // 매개변수값으로 들어올 수 가 있다.
+        // 그 이유는 바로 인터페이스도 일종의 부모의 개념으로 구현관계가 되기 때문이다.
+        SimpleGallery.prototype.show = function(alignable){
+            alignable.align(this.$images); // 추상 메서드 선언
+        }
+        // 가로 정렬 기능 구현 클래스 (리터럴 방식)
+        var horizontalAlignable = {
+            align : function($images){
+                // 이미지 갯수 구하기
+                var length = $images.length;
+                // 이미지 가로로 나열하기
+                for(var i=0; i<length;i++){
+                    var x = i*200;
+                    $images.eq(i).css({
+                        left : x,
+                        top : 0
+                    });
+                }
+            }
+        }
+        // 세로 정렬 기능 구현 클래스(리터럴 방식)
+        var verticalAlignable = {
+            align : function($images){
+                // 이미지 갯수 구하기
+                var length = $images.length;
+                // 이미지 세로 나열하기
+                for(var i=0; i<length;i++){
+                    var y = i*200;
+                    $images.eq(i).css({
+                        left : 0,
+                        top : y
+                    });
+                }
+            }
+        }
+        // 랜덤 정렬 기능 구현 클래스(리터럴 방식)
+        var randomAlignable = {
+            align : function($images){
+                // 이미지 갯수 구하기
+                var length = $images.length;
+                // 이미지 랜덤 나열하기
+                for(var i=0; i<length;i++){
+                    var x = 400 * Math.random();
+                    var y = 400 * Math.random();
+                    console.log("x : "+x);
+                    console.log("y : "+x);
+                    $images.eq(i).css({
+                        left : x,
+                        top : y
+                    });
+                }
+            }
+    }
+
+        // 바둑판 정렬 기능 구현 클래스(리터럴 방식)
+        var gridAlignable = {
+            align : function($images) {
+                // 이미지 갯수 구하기
+                var length = $images.length;
+                var count = 3;
+                // 이미지 바둑판 나열하기
+                for(var i=0; i<length;i++){
+                    var x = (i %count) * 200;
+                    var y = parseInt(i /count) * 200;
+                    $images.eq(i).css({
+                        left : x,
+                        top : y
+                    });
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <button id = "btnHorizontal">
+            가로정렬
+        </button>
+
+        <button id = "btnVertical">
+            세로정렬
+        </button>
+
+        <button id = "btnRandom">
+            랜덤정렬
+        </button>
+
+        <button id = "btnGrid">
+            바둑판정렬
+        </button>
+    </div>
+    <div class="image-container" id="container1">
+        <img src="images/1.png">
+        <img src="images/2.png">
+        <img src="images/3.png">
+        <img src="images/4.png">
+        <img src="images/5.png">
+        <img src="images/6.png">
+        <img src="images/7.png">
+        <img src="images/8.png">
+    </div>
+</body>
+</html>

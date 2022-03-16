@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스의 상속예제-1</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+		//부모클래스 정의
+		function MyParent() {
+			//프로퍼티 생성
+			this.property1 = "신은혁";
+		}
+		//메서드 생성
+		MyParent.prototype.method1=function() {
+			alert(this.property1);
+		}
+
+		//자식클래스 정의(확장 기능을 사용하지 않음)
+		function MyChild() {
+			//프로퍼티 정의 하지 않음
+		}
+		//자바스크립트에서의 상속 문법(아주 중요함)
+		MyChild.prototype = new MyParent();
+
+		//인스턴스 생성
+		var child = new MyChild();
+		//상속을 받았기에 부모의 멤버메서드인 method1()을 사용할 수가 있다.
+		child.method1();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

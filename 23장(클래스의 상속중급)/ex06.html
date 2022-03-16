@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메서드 오버로딩-2</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+		// 정사각형, 직사각형 넓이를 구하는 함수
+		function areaRectangle(){
+			var result = 0;
+			// 정사각형의 넓이 구하기 (공식 : 가로길이 * 세로길이) - 가로길이 세로길이가 같다.
+			if(arguments.length == 1){
+				result = arguments[0] * arguments[0];
+			}
+			// 직사각형의 넓이 구하기 (공식 : 가로길이 * 세로길이) - 가로길이 세로길이가 다르다.
+			else if(arguments.length == 2){
+				result = result = arguments[0] * arguments[1];
+			}
+			return result; // 결과값 리턴
+		}
+		// 함수 호출하기
+		console.log("정사각형의 넓이 : " + areaRectangle(10));
+		console.log("직사각형의 넓이 : " + areaRectangle(10,20));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

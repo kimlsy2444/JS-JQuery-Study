@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스의 상속예제-2</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+		//부모클래스 정의(멤버는 4개이다.)
+		function Car(speed) {
+			//프로퍼티 정의(1개)
+			this.speed = speed;
+		}
+		//메서드 정의(3개)
+		Car.prototype.speedUp = function() {
+			this.speed += 10;
+			document.write("일반차가 " + this.speed + "속도로 달립니다." + "<br/>");
+		}
+		Car.prototype.speedDown = function() {
+			this.speed -= 10;
+			document.write("일반차가 " + this.speed + "속도로 달립니다." + "<br/>")
+		}
+		Car.prototype.stop = function() {
+			document.write("일반차가 멈춥니다!" + "<br/>");
+		}
+
+		//자식클래스 정의
+		function SportCar(speed) {
+			this.speed = speed;
+		}
+
+		//상속하는 문법
+		//아래부분은 자식클래스의 메서드 위에 혹은 자식 클래스 블럭이 끝난 뒤 바로 코딩해주세요.
+		SportCar.prototype = new Car(500);
+
+		//메서드 정의
+		SportCar.prototype.run = function() {
+			document.write("스포츠카가 " + this.speed + "속도로 달립니다." + "<br/>");
+		}
+
+		//인스턴스 생성
+		//부모클래스 자기자신의 인스턴스를 생성한 것
+		var car = new Car(50);
+		car.speedUp();
+		car.speedDown();
+		car.stop();
+
+		//자식클래스 자기자신의 인스턴스를 생성한 것
+		var sportCar1 = new SportCar(100);
+		sportCar1.run();
+		
+		//상속을 하여 인스턴스를 생성
+		var sportCar2 = new SportCar(1000);
+		sportCar2.speedUp();
+		sportCar2.speedDown();
+		sportCar2.stop();
+		sportCar2.run();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

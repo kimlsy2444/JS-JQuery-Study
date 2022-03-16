@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다형성 예제-1</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+		// 자바스크립트에서는 추상클래스, 인터페이스, 다형성 문법을 지원하지 아니한다.
+        // 하여 , 아래 코드는 인터페이스를 흉내내는 코드라고 생각하자
+        function Runnable(){
+            this.run = function(){
+                // throw라는 키워드는 강제로 에러를 발생시키는 코드
+                throw new Error("run()메서드 미구현 에러");
+            }
+        }
+        // 인터페이스를 구현하는 클래스
+        function RunnableImplementsClass(){
+            // 추상메서드 오버라이딩 클래스
+            this.run = function(){
+                console.log("달립니다.");
+            }
+        }
+        // 인터페이스도 일종의 부모이다. 왜? 구현클래스들이 존재하기 때문에 서로 연관없는
+        // 구현 클래스들 간에 간접적인 관계를 만들어 준다.
+        // 상속코드
+        RunnableImplementsClass.prototype = new Runnable();
+
+        // 인스턴스 생성
+        var human = new RunnableImplementsClass();
+        // 부모클래스에 같은 이름의 메서드가 있어도 부모 클래스를 상속 받은 구현클래스의 재정의된
+        // 메서드가 호출된다.
+        human.run();
+
+        // 다형성 체크 부분
+        // instanceof : 좌측에는 참조변수(인스턴스변수)가 오고 우측에는 클래스 타입이 온다.
+        // instanceof연사자를 써서 조건문의  결과가 true가 나오면 우측에 있는 타입의 인스턴스 이거나
+        // 아니면 우측의 타입의 부모클래스 타입으로 형변환이 가능하다.
+
+        if(human instanceof RunnableImplementsClass){ // true가 나온다.
+            console.log("human 인스턴스 변수는 RunnableImplementsClass타입이다.");
+        }
+        // RunnableImplementsClass의 부모는 Runnable이라는 인터페이스를 흉내 낸 인터페이스다.
+        if(human instanceof Runnable){
+            console.log("human 인스턴스 변수는 Runnable클래스 타입이다.");
+        }
+        // Object클래스는 모든 클래스으 최고 부모 클래스이다.
+        if(human instanceof Object){
+            console.log("human 인스턴스 변수는 Object클래스 타입이다.");
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

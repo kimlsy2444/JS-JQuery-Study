@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메서드 오버라이드-2</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+		// 부모클래스 정의
+		function Calculator(){
+			console.log("Calculator클래스의 생성자 호출됨");
+		}
+		// 메서드 정의
+		Calculator.prototype.areaCircle = function(radius){
+			console.log("Calculator의 areaCircle()호출됨");
+			console.log("Calculator의 areaCircle()의 값 : " + (3.14159 * (radius * radius)));
+		}
+
+		// 자식클래스 정의
+		function Computer(){
+			console.log("Computer클래스의 생성자 호출됨");
+		}
+
+		// 상속 코드 작성
+		Computer.prototype = new Calculator();
+		// 생성자 설정
+		Computer.prototype.consturtor = Computer;
+
+		// 메서드 오버라이드 코드 (확장하는 코드 포함)
+		Computer.prototype.areaCircle = function(radius){
+			// 부모클래스의 areaCircle메서드 호출
+			Calculator.prototype.areaCircle.call(this,(100));
+
+			// 자식클래스의 확장 코드
+			console.log("Computer의 areaCircle()호출됨");
+			console.log("Computer의 areaCircle()의 값 : " + (Math.PI * (radius * radius)) + "입니다.");
+		}
+		// 자식클래스의 인스턴스 생성
+		var computer = new Computer();
+		computer.areaCircle(10);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

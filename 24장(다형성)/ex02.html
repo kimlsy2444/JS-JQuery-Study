@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다형성 예제-2(다형성 미적용 이미지 갤러리 만들기)</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <style>
+        div.image-container{
+            position: relative;
+        }
+        div.image-container img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 120px;
+        }
+        #btnHorizontal:hover{
+            background-color: red;
+        }
+        #btnVertical:hover{
+            background-color: yellow;
+        }
+        #btnRandom:hover{
+            background-color: blue;
+        }
+        #btnGrid:hover{
+            background-color: green;
+        }
+        div button{
+            font-size: 15pt;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        // 클래스 단위 프로그래밍으로 정렬하는 기능을 제공한 경우
+        
+        $(document).ready(function(){
+            // 모든 이미지를 가지고 오기 
+            var img1= new SimpleGallery("#container1 img");
+            // 버튼 클릭 이벤트 등록 코드
+
+            // 가로로 정렬하는 부분
+            $("#btnHorizontal").click(function(){
+                img1.show("horizontal");
+            });
+
+            // 세로 정렬하는 부분
+            $("#btnVertical").click(function(){
+                img1.show("vertical");
+            });
+
+            // 랜덤 정렬하는 부분
+            $("#btnRandom").click(function(){
+                img1.show("random");
+            });
+
+           // 바둑판 정렬하는 부분
+            $("#btnGrid").click(function(){
+                img1.show("grid");
+            });                
+
+        });
+
+        // 심플갤러리 클래스 정의
+        function SimpleGallery(selector){
+            this.$images = null;
+            this.init(selector);
+        }
+        // 요소 초기화
+        SimpleGallery.prototype.init = function(selector){
+            this.$images = $(selector);
+        }
+        // 매개변수로 넘어오는 type에 따라 가로, 세로, 랜덤, 바둑반 정렬이 이루어지는
+        // switch문으로 분기를 정하는 코드이다.
+        SimpleGallery.prototype.show = function(type){
+            switch(type){
+                case "horizontal" :
+                    this.alignHorizontal();
+                    break;
+                case "vertical" :
+                    this.alignVertical();
+                    break;
+                case "random" : 
+                    this.alignRandom();
+                    break;
+                case "grid" : 
+                    this.alignGrid();
+                    break;
+                default :
+                this.alignHorizontal();
+            }
+        }
+        // 가로 정렬 기능 코드
+        SimpleGallery.prototype.alignHorizontal = function(){
+            // 이미지 갯수 구하기
+            var length = this.$images.length;
+            // 이미지 가로로 나열하기
+            for(var i=0; i<length;i++){
+                var x = i*200;
+                this.$images.eq(i).css({
+                    left : x,
+                    top : 0
+                });
+            }
+        }
+
+        SimpleGallery.prototype.alignVertical = function(){
+            // 이미지 갯수 구하기
+            var length = this.$images.length;
+            // 이미지 세로 나열하기
+            for(var i=0; i<length;i++){
+                var y = i*200;
+                this.$images.eq(i).css({
+                    left : 0,
+                    top : y
+                });
+            }
+        }
+
+        SimpleGallery.prototype.alignRandom = function(){
+            // 이미지 갯수 구하기
+            var length = this.$images.length;
+            // 이미지 랜덤 나열하기
+            for(var i=0; i<length;i++){
+                var x = 400 * Math.random();
+                var y = 400 * Math.random();
+                console.log("x : "+x);
+                console.log("y : "+x);
+                this.$images.eq(i).css({
+                    left : x,
+                    top : y
+                });
+            }
+        }
+
+
+        SimpleGallery.prototype.alignGrid = function(){
+            // 이미지 갯수 구하기
+            var length = this.$images.length;
+            var count = 3;
+            // 이미지 바둑판 나열하기
+            for(var i=0; i<length;i++){
+                var x = (i %count) * 200;
+                var y = parseInt(i /count) * 200;
+                this.$images.eq(i).css({
+                    left : x,
+                    top : y
+                });
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <button id = "btnHorizontal">
+            가로정렬
+        </button>
+
+        <button id = "btnVertical">
+            세로정렬
+        </button>
+
+        <button id = "btnRandom">
+            랜덤정렬
+        </button>
+
+        <button id = "btnGrid">
+            바둑판정렬
+        </button>
+    </div>
+    <div class="image-container" id="container1">
+        <img src="images/1.png">
+        <img src="images/2.png">
+        <img src="images/3.png">
+        <img src="images/4.png">
+        <img src="images/5.png">
+        <img src="images/6.png">
+        <img src="images/7.png">
+        <img src="images/8.png">
+    </div>
+</body>
+</html>

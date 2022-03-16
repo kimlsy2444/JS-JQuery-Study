@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트에서의 상속 예제</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+	<style>
+		body{
+			font-size: 15pt;
+		}
+		div.image-container{
+			position: relative;
+			border:  2px solid #000;
+			height: 600px;
+		}
+		div.image-container img{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 120px;
+		}
+	</style>
+    <script>
+		$(document).ready(function(){
+			// 인스턴스 생성 및 이벤트 등록처리
+			var gallery = new SimpleAniGallery();
+			gallery.init("#container1 img");
+
+			$("#btnStart").click(function(){
+				// 이미지 정렬하기
+				gallery.showAni(3,150,150);
+			})
+		});
+
+
+
+
+
+		// 부모클래스 정의
+		function SimpleGallery(){
+			// 프로퍼티 생성
+			this.$images = null;
+		}
+		// 요소 초기화 메서드 정의
+		SimpleGallery.prototype.init = function(selector){
+			this.$images = $(selector);
+		}
+		SimpleGallery.prototype.show = function(count,imageWidth,imageHeight){
+			// 이미지 개수 구하기
+			var length = this.$images.length;
+			for(var i = 0; i<length; i++){
+				//n번째 이미지 구하기
+				var $img = this.$images.eq(i);
+				// 이미지의 위치값 구하기
+				var x = 100 + ((i % count) * imageWidth);
+				var y = 100 +((parseInt(i / count))* imageHeight);
+
+
+
+				// 이미지의 위치 생성하기
+				$img.css({
+					left:x,
+					top:y
+				});
+			}
+		}
+
+		// 자식 클래스 정의하기
+		function SimpleAniGallery(){}
+		// 부모클래스와 자식클래스 상속 코드 작성
+		SimpleAniGallery.prototype = new SimpleGallery();
+		// 이미지 출력 메서드 정의하기
+		SimpleAniGallery.prototype.showAni = function(count,imageWidth,imageHeight){
+			// 이미지 갯수 구하기
+			var length = this.$images.length;
+			for(var i = 0; i<length;i++){
+				// n번째 이미지 구하기
+				var $img = this.$images.eq(i);
+
+				// 이미지의 위치값 구하기
+				var x = 100 + ((i % count) * imageWidth);
+				var y = 100 +((parseInt(i / count))* imageHeight);
+
+				console.log("x : "+ x + ", y : "+ y);
+				// 이미지의 위치 설정하여 애니메이션 처리
+				$img.animate({
+					left:x,
+					top:y
+				},1500);
+			}
+		}
+    </script>
+</head>
+<body>
+	<button id = "btnStart">이미지 정렬하기</button>
+	<div class="image-container" id="container1">
+		<img src="images/1.png">
+		<img src="images/2.png">
+		<img src="images/3.png">
+		<img src="images/4.png">
+		<img src="images/5.png">
+		<img src="images/6.png">
+		<img src="images/7.png">
+		<img src="images/8.png">
+	</div>
+</body>
+</html>

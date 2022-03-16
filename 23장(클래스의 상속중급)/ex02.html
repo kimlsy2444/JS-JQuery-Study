@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부모 클래스의 생성자 호출-2</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+		// 부모클래스 정의(멤버가 5개)
+		function Tv(power,channel,){
+			// 프로퍼티 생성
+			this.power = power;
+			this.channel = channel;
+		}
+		// 메서드 정의
+		Tv.prototype.power = function(){
+			this.power = !power;
+		}
+		Tv.prototype.channelUp = function(){
+			++this.channel;
+		}
+		Tv.prototype.channelDown = function(){
+			--this.channel;
+		}
+
+		// 자식클래스 정의
+		function CaptionTv(caption) {
+			// 부모클래스의 매개변수가 2개 있는 생성자 호출 코드
+			Tv.call(this,true, 10);
+			// 자식클래스만 프로퍼티 초기화
+			this.caption = caption;
+		}
+		// 상속 코드
+		CaptionTv.prototype = new Tv();
+
+		// 메서드 정의
+		CaptionTv.prototype.displayCaption = function(text){
+			// this.caption값이 true일 때만 조건이 참이 되어 콘솔에 text를 출력할것이다
+			if(this.caption){
+				console.log(text);
+			}
+		}
+		// 인스턴스 생성
+		var captionTv = new CaptionTv(true);
+		captionTv.displayCaption("캡션 기능 출력 메세지 hello!");
+		console.log("부모클래스 프로퍼티 power : "+ captionTv.power);
+		console.log("부모클래스 프로퍼티 channel : "+ captionTv.channel);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

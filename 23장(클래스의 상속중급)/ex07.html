@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>constructor 프로퍼티 예제</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+		// 부모클래스 정의
+		function MyParent(){
+			this.property = "이준성";
+		}
+		MyParent.prototype.method = function(){
+			console.log("property : " +this.property);
+		
+		}
+
+		// 자식클래스 정의
+		function MyChild(){
+
+		}
+		MyChild.prototype = new MyParent();
+		// 자식클래스인 MyChild의 constructor프로퍼티에 MyChild클래스의 생성자 정보를 담기 위한코드
+		// 아래와 같이 명시적으로 MyChild클래스의 constructor프로퍼티에 MyChild인스턴스를 대입을 하면
+		// 부모클래스의 생성자가 담기지 않고 MyChild클래스의 생성자 정보가 담긴다.
+		MyChild.prototype.constructor = MyChild;
+		
+		// 부모클래스와 자식클래스의 각각의 인스턴스 생성하기
+		// constroutor프로퍼티와 this는 new 라는 연산자로 메모리 공간을 할당하면서
+		// 생성자를 호출할 때 , 비로소 활성화 된다. 
+		// 하지만 상속관계 있을때 자식클래스의 constructor 프로퍼티에는 기본적으로
+		// 부모클래스의 생성자가 담기게 된다.
+		var parent = new MyParent();
+		var child = new MyChild();
+		
+
+		// 부모클래스의 인스턴스인지 확인하는 코드
+		if(parent.constructor == MyParent){
+			console.log("parent는 MyParent클래스의 인스턴스 입니다.");
+		}
+		if(parent.constructor == MyChild){
+			console.log("child는 MyChild 인스턴스 입니다.");
+		}
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

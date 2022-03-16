@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스의 상속의 기능 - 코드 중복 제거</title>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+
+		// 부모 클래스 정의(중복 코드를 담을 클래스)
+		// 중복된 코드를 부모 클래스가 관리하게 되면 , 유지보수에도 수월하고
+		// 코드의 신뢰성도 높아지고, 코드의 양도 줄어지게 된다.
+		function MyParent(){
+			this.property1 = 10;
+
+		}
+		// 메서드 정의 
+		MyParent.prototype.method1 = function(){
+			console.log("this.property1 : "+this.property1);
+		}
+
+
+
+		// 첫 번째 클래스 -MyClassA
+		function MyClassA(){
+		
+		}
+		// 상속으로 부모클래스(MyParent)와 자식클래스(MyClassA)를 연결하는 문법
+		MyClassA.prototype = new MyParent();
+		// MyClassA가 가지는 고유의 메서드
+		MyClassA.prototype.method2 = function(){
+			console.log("이 기능은 MyClassA에 있는 기능입니다.");
+		}
+		// 두 번째 클래스 -MyClassB
+		function MyClassB(){
+		
+		}
+		// 상속으로 부모클래스(MyParent)와 자식클래스(MyClassB)를 연결하는 문법
+		MyClassB.prototype = new MyParent();
+		// MyClassB가 가지는 고유의 메서드
+		MyClassB.prototype.method2 = function(){
+			console.log("이 기능은 MyClassB에 있는 기능입니다.");
+		}
+
+		// 인스턴스 생성
+		var classA =new MyClassA();
+		// 프로퍼티와 메서드에 접근
+		console.log("classA.property1 : " + classA.property1);
+		classA.method1();
+		classA.method2();
+
+		// 인스턴스 생성
+		var classB =new MyClassB();
+		// 프로퍼티와 메서드에 접근
+		console.log("classB.property1 : " + classA.property1);
+		classB.method1();
+		classB.method2();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

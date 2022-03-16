@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>합성 예제-2(합성을 사용한 풀이)</title>
+    <style>
+        div.image-container{
+            position: relative;
+            border: 1px solid blue;
+            height: 300px;
+        }
+        div.image-container img{
+            position: absolute;
+            top: 0;
+            width: 120px;
+        }
+        #container {
+            background-color: aqua;
+        }
+    </style>
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 인스턴스 생성
+            var gallery = new SimpleGallery("#container img");
+            alert("이미지 가로 정렬");
+            gallery.align();
+        });
+
+        // 심플갤러리 클래스 정의
+        // Halignable클래스에서 구현되어진 기능(가로정렬)을 사용하는 클래스
+        function SimpleGallery(selector){
+            this.$images = $(selector);
+        }
+
+        // 메서드 정의
+        // 이미지를 가로로 정렬하는 메서드
+        // 합성을 이용함(구현되어있는 HAlignable.aglign()메서드 구현부에서 호출함)
+        // 합성이란 자기자신이 필요한 기능이 있다면, 직접 구현하지 않고 다른 클래스 에서
+        // 구현된 기능이 있다면 그것을 연결해서 사용하는 기능이 바로 합성이다.
+        SimpleGallery.prototype.align = function(){
+            // 가로 정렬 기능이 구현되어 있는 Halignable클래스의 align()를 빌려서 
+            Halignable.align(this.$images);
+            
+        }
+        // 가로 정렬 기능을 구현한 리터럴 클래스(인스턴스가 바로 생성되며 1개밖에 생성을 하지 못한다.)
+        var Halignable = {
+            // 정렬 메서드를 만들기
+            align : function($images){
+                // 이미지 개수 구하기
+                var length = $images.length;
+                // 가로 정렬하는 이미지 나열하기
+                for(var i = 0; i<length; i++)
+                    {   
+                        var x = i * 150;
+                        $images.eq(i).css({
+                            left : x,
+                            top : 0
+                        });
+                    }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="image-container" id="container">
+        <img src="images/1.png">
+        <img src="images/2.png">
+        <img src="images/3.png">
+        <img src="images/4.png">
+        <img src="images/5.png">
+        <img src="images/6.png">
+        <img src="images/7.png">
+        <img src="images/8.png">
+    </div>
+</body>
+</html>
