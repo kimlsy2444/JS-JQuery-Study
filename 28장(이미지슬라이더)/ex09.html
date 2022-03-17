@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>이미지 슬라이더-이미지 변경 이벤트 발생</title>
+	<title>이미지 슬라이더-이미지 전환 옵션 기능 구현</title>
 	<!-- 외부 css파일 가져오기 -->
 	<link rel="stylesheet" type="text/css" href="css/imageslider.css" >
 	<style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            font-size: 11px;
-            color: #000;
-        }
-        a, a:visited{
-            color: #000;
-        }
-        #imageSlider1{
-            margin-left: 50px;
-            margin-top: 50px;
-        }
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			font-size: 11px;
+			color: #000;
+		}
+		a, a:visited{
+			color: #000;
+		}
+		#imageSlider1{
+			margin-left: 50px;
+			margin-top: 50px;
+		}
 	</style>
-
 	<script src="libs/jquery-3.6.0.min.js"></script>
 	<script src="libs/jquery.easing.1.3.js"></script>
     <script src="js/imageslider.js"></script>
@@ -43,22 +42,36 @@
 			//   이미지 슬라이더의 이미지도 인덱스 메뉴 아이템의 선택되어진 인덱스 이미지를 보여주는
 			//   기능을 추가
 
-		//04단계
+		//04단계 : 이미지 변경 이벤트 발생 기능
 			// - 이미지 변경 이벤트 발생 기능 추가(사용자 정의 이벤트 사용)
 
-		$(document).ready(function() {
+		//05단계 : 이미지 자동 전환 기능 구현
+			// - setInterval()를 이용하여 이미지가 자동으로 슬라이딩이 되는 기능을 구현
+			// - 마우스가 이미지 슬라이더 영역에 enter될 때는, 슬라이더를 멈추는 기능을 구현
+			// - 마우스가 이미지 슬라이더 영역에 leave될 때는, 슬라이더가 다시 자동으로 슬라이딩 되는 기능을 구현
+
+		//06단계 : 이미지 전환 옵션 처리
+			// - 이미지 전환 옵션 만들기
+			// - 이미지 전환 옵션 적용하기
+
+			$(document).ready(function() {
 			//첫 번째 이미지를 보여주기 위한 코드
 			//$(".image-slider .slider-body .image-list  img:eq(0)").css("opacity", 1.0);
 			//0번째 인덱스가 표식이 되도록 하는 코드
 			//$(".image-slider .slider-body ul.index-nav li a:eq(0)").addClass("select");
 
 			//인스턴스 생성하기
-			var imageSlider = new ImageSlider("#imageSlider1");
+			var imageSlider = new ImageSlider("#imageSlider1",{
+				startIndex : 2,
+				// autoPlay : false,
+				autoPlayDelayTime : 3000
+			});
+			//imageSlider.showImageAt(2);
 			
-			// 사용자 정의 이벤트인 change의 리스너를 등록하는 코드
-			// imageSlider.$imageSlider.on("change", function(event){
-			// 	console.log("event.oldIndex : " + event.oldIndex + ", event.newIndex : " + event.newIndex);
-			// });
+			//사용자 정의 이벤트인 change의 리스너를 등록하는 코드
+			imageSlider.$imageSlider.on("change", function(event){
+				console.log("event.oldIndex : " + event.oldIndex + ", event.newIndex : " + event.newIndex);
+			});
 		});	
     </script>
 </head>
@@ -76,7 +89,7 @@
 			</div>
 			<!-- 인덱스 메뉴 아이템 부분을 나타내는 코드 -->
 			<ul class="index-nav">
-				<!-- alt속성 : Alternate(대체하다)의 줄임말이다.img태그나 a태그에서 나타내고자 하는
+				<!-- alt속성 : Al	ternate(대체하다)의 줄임말이다.img태그나 a태그에서 나타내고자 하는
 				이미지나 글자가 보이지 않을 때, 대체 텍스트로 나타내는 속성이다.
 				이 필수 속성인데 시각장애인은 이미지나 글자를 볼수가 없기 때문에 alt속성을 추가
 				해주면 스크린 리더를 통해서 듣는다. alt속성은 이미지를 포털 사이트의 검색엔진은
