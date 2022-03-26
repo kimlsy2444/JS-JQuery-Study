@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery 플러그인 예제-1</title>
+	
+	<style>
+		body {
+			font-size: 11pt;
+			font-family: "고딕";
+		}
+		
+		ul.menu {
+			padding: 10px;
+			list-style: none;
+			border : 1px solid #000;
+		}
+		ul.menu li {
+			border : 1px solid #eee;
+			margin: 10px;
+		}
+	</style>
+
+	<script src="libs/jquery-3.5.1.min.js"></script>
+	
+	<script>
+		//플러그인 정의
+		(function($){
+			$.fn.removeAni = function(){
+				this.each(function(index){
+					//현재 요소 얻는 코드
+					var $target = $(this);
+					//딜레이 후 애니메이션 실행하게 하는 코드
+					$target.delay(index * 2000).animate({
+						height : 0
+					}, 1000, function(){
+						//애니메이션 종료 후 현재 요소를 제거
+						$target.remove();
+					});
+				});
+				return this;
+			}
+		})(jQuery)
+
+		$(document).ready(function(){			
+			//removeAni() 플러그인 호출
+			$(".menu li").removeAni();
+		});	
+    </script>
+</head>
+<body>
+	<ul class="menu">
+		<li>메뉴1</li>
+		<li>메뉴2</li>
+		<li>메뉴3</li>
+		<li>메뉴4</li>
+		<li>메뉴5</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>탭패널-탭내용 활성화(슬라이더 효과 적용)</title>
+	<!-- 외부 css파일 가져오기 -->
+	<link rel="stylesheet" type="text/css" href="css/tabpanel.css">
+	<style>
+		/* link가상선택자는 링크된 페이지로 가기전 링크상태를 나타낸다. */
+		a:link {
+			text-decoration: none;
+			color : #000;
+		}
+		/* visited가상선택자는 링크된 페이지에 전환된 후 링크상태를 나타낸다. 				 */
+		a:visited {
+			text-decoration: none;
+			color: #000;
+		}
+		/* active가상선택자는 클릭했을때, 링크상태를 나타낸다. */
+		a:active {
+			text-decoration: none;
+			color: #000;
+		}
+		/* 마우스가 탭메뉴에 올라간 상태를 나타내는 것이다. */
+		a:hover {
+			text-decoration: none;
+			color: #000;
+		}
+		#tabPanel1 {
+			left: 100px;
+			top : 100px;
+		}
+	</style>
+
+	<script src="libs/jquery-3.5.1.min.js"></script>
+	<script src="libs/jquery.easing.1.3.js"></script>
+	<script src="js/tabpanel.js"></script>
+    <script>
+
+		//01단계 : 레이아웃 잡기
+			// - 1) 레이아웃 구조 잡기	
+			// - 2) 스타일 설정
+
+		//02단계 : 탭메뉴 만들기
+		
+		//03단계 : 탭내용 활성화
+			// - 1) 효과 없이 탭내용 활성화 기능 추가
+			// - 2) effect 프로퍼터 추가 
+			// - 3) 슬라이드 효과를 적용해 탭내용을 활성화하는 기능 추가
+
+		$(document).ready(function(){
+			//인스턴스 생성
+			var tabPanel = new TabPanel("#tabPanel1", "slide");
+		});	
+    </script>
+</head>
+<body>
+	<!-- 탭영역 전체(탭메뉴, 탭내용)를 나타내는 태그이다. -->
+	<div class="tab-panel" id="tabPanel1">
+		<!-- 탭메뉴를 설정하는 태그 -->
+		<ul class="tab-menu">
+			<li>
+				<a href="#" alt="google">google</a>			
+			</li>
+			<li>
+				<a href="#" alt="facebook">facebook</a>			
+			</li>
+			<li>
+				<a href="#" alt="pinterest">pinterest</a>			
+			</li>
+			<li>
+				<a href="#" alt="twitter">twitter</a>			
+			</li>
+			<li>
+				<a href="#" alt="path">path</a>			
+			</li>
+		</ul>
+		<!-- 탭내용에 나올 이미지들을 나타내는 태그들 -->
+		<div class="tab-contents-wrapper">
+			<div class="tab-contents">
+				<div class="content">
+					<img src="images/content_google.png">
+				</div>
+				<div class="content">
+					<img src="images/content_facebook.png">
+				</div>
+				<div class="content">
+					<img src="images/content_pinterest.png">
+				</div>
+				<div class="content">
+					<img src="images/content_twitter.png">
+				</div>
+				<div class="content">
+					<img src="images/content_path.png">
+				</div>
+			</div>
+		</div>
+	</div>	
+</body>
+</html>

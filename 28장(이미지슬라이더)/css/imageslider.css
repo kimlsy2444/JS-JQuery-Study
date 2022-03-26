@@ -25,9 +25,10 @@
 }
 
 .image-slider .slider-body .image-list img {
+    display: inline;
     width:100%;
     height:100%;
-    position: absolute;    
+    position: relative;    
     left: 0;
     top: 0;
     /* 투명도 */

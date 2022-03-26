@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>1단 바메뉴 만들기-오버 메뉴아이템 구현하기-(1.BarMenu클래스 만들기)</title>
+	<!-- 외부 css파일 가져오기 -->
+	<link rel="stylesheet" type="text/css" href="css/barmenu.css" >
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		body {
+			font-size: 11px;
+		}
+		#barMenu1 {
+			position: relative;
+			left: 100px;
+			top: 100px;
+			width: 700px;
+		}
+	</style>
+
+	<script src="libs/jquery-3.5.1.min.js"></script>
+	<script src="js/barmenu.js"></script>
+    <script>
+			//02단계
+			// - 오버 메뉴아이템 구현하기
+			//   1) BarMenu클래스 만들기
+			//      - BarMenu기본적인 구조 설명하기
+			//      - 기본 규칙 설명하기
+			//        - BarMenu클래스 생성자에 사용할 프로퍼티 생성하기
+			//        - init() 요소를 구하고 프로퍼티 초기화 하기
+			//        - initEvent()만들고 이벤트 초기화 하기	
+
+
+			//01단계 : 메뉴 구조 잡기
+			// - 레이아웃 구조 잡기
+			// - 오버 스타일 효과 테스트
+			// - 선택 스타일 효과 테스트
+			// - 선택 위치로 bar이동 시키키 테스트
+			//   - 이동 위치 : 선택 메뉴아이템의 위치 + margin-left
+					
+		$(document).ready(function(){			
+			
+			//오버 스타일 효과 테스트
+		// 	$(".bar-menu .menu-body li:eq(0)").addClass("over");
+
+		// 	//선택 
+		//  스타일 효과 테스트
+		// 	//3번째 메뉴아이템에 선택 스타일 적용
+		// 	var $item = $(".bar-menu .menu-body li:eq(3)");
+		// 	$item.addClass("select");
+
+		// 	//선택한 메뉴아이템 항목위치로 bar이동 테스트
+		// 	//이동위치 현재위치 + margin-left
+		// 	//position().left, position().top는 부모(offsetParent)엘러먼트를 기준으로 하여
+		// 	//엘러먼트(요소)가 위치한 x, y좌표값을 의미한다.
+		// 	//offsetParent()는 offsetLeft, offsetTop의 기준이 될 부모 엘러먼트
+		// 	var left = $item.position().left + parseInt($item.css("margin-left"));
+
+		// 	//outerWidth()는 border포함 너비값
+		// 	//innerWidth()는 border 안쪽 너비값
+		// 	//width는 padding 안쪽 너비값
+		// 	var width = $item.outerWidth();
+
+		// 	//빨간색 바(bar)의 위치값 설정하는 코드
+		// 	$(".bar").css({
+		// 		left : left,
+		// 		width : width
+		// 	});
+
+			//BarMenu클래스 인스턴스 생성하기
+			var barMenu = new BarMenu();	
+		});	
+    </script>
+</head>
+<body>
+	<div class="bar-menu" id="barMenu1">
+		<ul class="menu-body">
+			<li>코딩형홈</li>
+			<li>공개 스터디</li>
+			<li>온라인 동영상 강의</li>
+			<li>참여형 특강</li>
+			<li>정보공유 세미나</li>
+			<li>기업/단체강의</li>
+		</ul>
+		<!-- 빨간색 바(bar)를 나타내기 위한 코드 -->
+		<div class="bar">			
+		</div>
+
+		<div id="info">			
+		</div>
+	</div>    
+</body>
+</html>

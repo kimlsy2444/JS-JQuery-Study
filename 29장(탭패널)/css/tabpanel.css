@@ -1,0 +1,79 @@
+/* 탭메뉴 전체 영역 스타일 설정 */
+.tab-panel {
+    font-size: 20px;
+    color: #000;
+    position: relative;
+    left: 0px;
+    top : 0px;
+    width: 780px;
+    height: 360px;
+}
+
+.tab-panel ul.tab-menu {
+    /* 탭메뉴 최대크기가 44가 된다.(선택 탭메뉴 크기가 44가 되고 비선택 탭메뉴의 크기는 40으로 설정) */
+    height: 44px; 
+    list-style: none;
+    left : 30px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+/* 탭메뉴 하나하나씩 스타일 설정하는 부분 */
+.tab-panel ul.tab-menu li {
+    position: relative;
+    height: 30px;
+    width: 97px;
+    float: left;
+
+    background-image: url("../images/tab_resource.png");
+    background-repeat: no-repeat;
+    /* 배경이미지의 위치를 설정하는 코드 */
+    background-position: left top; 
+    /* z-index값은 값이 클수록 먼저 배치가 되는 속성 */
+    z-index: 40;
+}
+/* 마우스가 올라간 상태를 나타내는 스타일 */
+.tab-panel ul.tab-menu li:hover {
+    background-position-y: -43px;
+}
+/* 선택상태를 나타내는 스타일 */
+.tab-panel ul.tab-menu li.select {
+    background-position-y: -86px;
+    z-index: 100;
+
+    height: 44px;
+    margin-top: -5px;
+}
+
+.tab-panel ul.tab-menu li a {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 8px;
+}
+
+/* 여기서부터는 탭내용 영역 */
+.tab-panel .tab-contents-wrapper {
+    background-image: url("../images/content_bg.png");
+    background-repeat: no-repeat;
+    position: relative;
+    margin-top: -18px;
+    width: 780px;
+    height: 340px;
+    z-index: 50;
+}
+.tab-panel .tab-contents-wrapper .tab-contents {
+    position: relative;
+    left: 10px;
+    top : 10px;
+    width: 760px;
+    height: 310px;
+    overflow: hidden;
+}
+
+.tab-panel .tab-contents-wrapper .tab-contents .content {
+    position: absolute;
+    left: 0px;
+    top : 0px;
+    opacity: 0.0;
+}

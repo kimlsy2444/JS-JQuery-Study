@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery 플러그인 예제-2</title>
+	
+	<style>
+		body {
+			font-size: 11pt;
+			font-family: "고딕";
+		}
+		div, p, ul, li {
+			border: 1px #eee solid;
+			margin: 10px;
+		}
+		ul {
+			padding: 10px;
+		}
+		li.select {
+			background-color: #ccc;
+		}
+	</style>
+
+	<script src="libs/jquery-3.5.1.min.js"></script>
+	
+	<script>
+		(function($){
+			//redColor라는 플러그인 정의
+			$.fn.redColor = function() {  
+				console.log(this.length);
+				//요소 개수만큼 border속성 변경
+				this.each(function(index) {
+					$(this).css("border", "4px solid #f00");
+				});
+			}
+			return this;
+		})(jQuery)
+
+		$(document).ready(function(){			
+			//redColor플러그인을 사용하지 않은 경우
+			//$("p").css("border", "4px solid #f00");
+
+			//redColor플러그인을 사용하는 경우
+			$("p").redColor();
+		});	
+    </script>
+</head>
+<body>
+	<div id="samplePage" class="page">
+        샘플페이지(div, id=samplePage, class=page)
+        <div id="header">
+            헤더 영역(div, id=header)
+        </div>
+        <div id="content" class="sample-content">
+            노드 찾기(div, id=content class=sample-content)
+            <ul class="menu">
+                일반 노드 찾기(ul, class=menu)
+                <li data-value="1">id로 찾기(li, data-value=1)</li>
+                <li class="select">tag로 찾기(li, class=select)</li>
+                <li data-value="2">class로 찾기(li, data-value=2)</li>
+                <li class="test1">속성으로 찾기(li, class=test1)</li>
+            </ul>
+            <div class="content-data">
+                자식 노드 찾기(div, class=content-data)
+                <p class="test1">1. 모든 자식 노드 찾기(p, class=test1)</p>
+                <p>2. 특정 자식 노드만 찾기(p)</p>
+                <p class="test2">2. 마지막 자식 노드 찾기(p, class=test2)</p>
+            </div>
+        </div>
+        <div id="footer">
+            푸터 영역(div, id=footer)
+        </div>
+    </div>    
+</body>
+</html>

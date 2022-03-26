@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>폴더 아코디언 메뉴-레이아웃 만들기(구조 및 스타일 설정)</title>
+	<!-- 외부 css파일 가져오기 -->
+	<link rel="stylesheet" type="text/css" href="css/accordion.css" >
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		body {
+			font-size: 12px;
+		}
+		#accordionMenu1 {
+			margin: 100px;
+			width: 300px;
+		}	
+	
+	</style>
+
+	<script src="libs/jquery-3.5.1.min.js"></script>
+	<script src="libs/jquery.easing.1.3.js"></script>
+	<script src="js/accordion.js"></script>
+    <script>
+
+		//01단계 : 레이아웃 잡기
+			// - 레이아웃 구조 잡기
+			// - 서브 메뉴패널 스타일 설정
+			// - 폴더의 이미지 부분 스타일 설정 설정
+					
+		$(document).ready(function(){
+			
+		});	
+    </script>
+</head>
+<body>
+	<ul class="accordion-menu" id="accordionMenu1">
+		<li>
+			<!-- 메인 메뉴아이템의 구조를 잡는 부분 -->
+			<div class="main-title"><span class="folder"></span><a>한식</a>
+			</div>
+			<!-- 서브 메뉴아이템의 구조를 잡는 부분 -->
+			<ul class="sub">
+				<li><a>된장찌게 세트</a></li>
+				<li><a>김치찌게 세트</a></li>
+				<li><a>불고기 세트</a></li>
+				<li><a>삼겹살 세트</a></li>
+			</ul>
+		</li>
+		<li>
+			<!-- 메인 메뉴아이템의 구조를 잡는 부분 -->
+			<div class="main-title"><span class="folder"></span><a>중식</a>
+			</div>
+			<!-- 서브 메뉴아이템의 구조를 잡는 부분 -->
+			<ul class="sub">
+				<li><a>짜장면</a></li>
+				<li><a>짬뽕</a></li>
+				<li><a>볶음밥</a></li>				
+			</ul>
+		</li>
+		<li>
+			<!-- 메인 메뉴아이템의 구조를 잡는 부분 -->
+			<div class="main-title"><span class="folder"></span><a>양식</a>
+			</div>
+			<!-- 서브 메뉴아이템의 구조를 잡는 부분 -->
+			<ul class="sub">
+				<li><a>스테이크</a></li>
+				<li><a>돈까스</a></li>
+				<li><a>파스타</a></li>				
+				<li><a>오므라이스</a></li>				
+				<li><a>포테이토크림</a></li>			
+				<li><a>비프콘소메</a></li>					
+			</ul>
+		</li>
+		<li>
+			<!-- 메인 메뉴아이템의 구조를 잡는 부분 -->
+			<!-- 추가 부분은 서브 메뉴아이템이 존재하지 않는다. -->
+			<div class="main-title"><span class="folder empty"></span><a>추가</a>
+			</div>		
+		</li>
+	</ul>
+</body>
+</html>
